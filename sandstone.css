@@ -1,0 +1,118 @@
+body {
+  font-family: system-ui;
+  background: #f06d06;
+
+  color: white;
+  text-align: center;
+}
+
+.wrapper {
+  /* background-image: url('https://unsplash.com/photos/black-trike-parked-near-soter-F6-U5fGAOik'); */
+  background-image: url('./image-exterior-iloveimg-com.jpeg');
+  border: 1px solid black;
+
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+
+  /* background-repeat: no-repeat; */
+  /* background-size: length; */
+  /* background-size: auto|length|cover|contain|initial|inherit; */
+  /* background-size: cover; */
+  height: 100%;
+  overflow: hidden;
+  /* background-size:     cover; */
+  /* background-size:     100% 100%; */
+  background-size: 100vw 100vh;
+  background-repeat:   no-repeat;
+  background-position: center center; 
+
+
+  /* background-size: contain; */
+  /* background-repeat: no-repeat; */
+}
+
+/* .wrapper path {
+  stroke: black;
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 6;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-direction: normal;
+} */
+
+.wrapper path {
+  /* 
+  fill: none;
+  stroke: black; 
+  */
+  /* stroke: transparent; */
+  /* stroke-width: 1; */
+
+  fill: none;
+  /* fill: green; */
+  /* fill-opacity: 0.5; */
+  stroke: white; 
+  stroke-linecap: round;
+  /* stroke-opacity: 0.5; */
+  stroke-width: 38; 
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-direction: normal;
+}
+.wrapper #s-path {
+  stroke-dasharray: 5838;
+  animation-name: writeS;
+}
+@keyframes writeS {
+  0% {
+    stroke-dashoffset: 5838;
+  }
+  40% {
+    stroke-dashoffset: 0;
+  }
+}
+.wrapper #andstone-path {
+  stroke-dasharray: 8577;
+  animation-name: writeAndStone;
+}
+
+@keyframes writeAndStone {
+  0%,
+  20% {
+    stroke-dashoffset: 8577;
+  }
+  90% {
+    stroke-dashoffset: 0;
+  }
+}
+.wrapper #t-cross-path {
+  stroke-dasharray: 868;
+  animation-name: writeTCross;
+}
+
+@keyframes writeTCross {
+  0%,
+  91% {
+    stroke-dashoffset: 868;
+  }
+  93% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.wrapper #underline {
+  stroke-dasharray: 2212;
+  animation-name: writeUnderline;
+}
+@keyframes writeUnderline {
+  0%,
+  94% {
+    stroke-dashoffset: 2212;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
