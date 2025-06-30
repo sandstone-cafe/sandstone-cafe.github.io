@@ -8,7 +8,10 @@ body {
 
 .wrapper {
   /* background-image: url('https://unsplash.com/photos/black-trike-parked-near-soter-F6-U5fGAOik'); */
-  background-image: url('./image-exterior-iloveimg-com.jpeg');
+  background-image: url(
+    './assets/images/store/image-exterior.jpeg'
+
+    );
   border: 1px solid black;
 
   /* -webkit-background-size: cover;
