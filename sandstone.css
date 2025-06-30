@@ -7,52 +7,21 @@ body {
 }
 
 .wrapper {
-  /* background-image: url('https://unsplash.com/photos/black-trike-parked-near-soter-F6-U5fGAOik'); */
-  background-image: url(
+  /* background-image: url(
     './assets/images/store/image-exterior.jpeg'
-
+    ); */
+  background-image: url(
+    './assets/images/store/image-exterior.webp'
     );
   border: 1px solid black;
-
-  /* -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; */
-
-  /* background-repeat: no-repeat; */
-  /* background-size: length; */
-  /* background-size: auto|length|cover|contain|initial|inherit; */
-  /* background-size: cover; */
   height: 100%;
   overflow: hidden;
-  /* background-size:     cover; */
-  /* background-size:     100% 100%; */
   background-size: 100vw 100vh;
   background-repeat:   no-repeat;
   background-position: center center; 
-
-
-  /* background-size: contain; */
-  /* background-repeat: no-repeat; */
 }
 
-/* .wrapper path {
-  stroke: black;
-  fill: none;
-  stroke-linecap: round;
-  stroke-width: 6;
-  animation-duration: 4s;
-  animation-timing-function: linear;
-  animation-direction: normal;
-} */
-
 .wrapper path {
-  /* 
-  fill: none;
-  stroke: black; 
-  */
-  /* stroke: transparent; */
-  /* stroke-width: 1; */
 
   fill: none;
   /* fill: green; */
