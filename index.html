@@ -1,194 +1,1161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sandstone 02</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Brew Cafe</title>
+    <style>
+        :root {
+            --xanthous: hsla(41, 91%, 61%, 1);
+            --chocolate: hsla(24, 91%, 25%, 1);
+            --old-lace: hsla(34, 100%, 96%, 1);
+            --licorice: hsla(10, 94%, 6%, 1);
+            --princeton-orange: hsla(31, 95%, 56%, 1);
+            
+            --primary: var(--xanthous);
+            --secondary: var(--chocolate);
+            --accent: var(--princeton-orange);
+            --background: var(--old-lace);
+            --surface: rgba(255, 255, 255, 0.9);
+            --text: var(--licorice);
+            --text-secondary: var(--chocolate);
+        }
 
-  <link rel="stylesheet" href="sandstone.css">
+        [data-theme="dark"] {
+            --background: var(--licorice);
+            --surface: rgba(30, 30, 30, 0.9);
+            --text: var(--old-lace);
+            --text-secondary: var(--xanthous);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--background);
+            color: var(--text);
+            transition: all 0.3s ease;
+            line-height: 1.6;
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .nav-container {
+            background: rgba(20, 20, 20, 0.95);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 3px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent);
+            color: var(--background);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            width: 100%;
+            background: var(--surface);
+            backdrop-filter: blur(10px);
+            transition: left 0.3s ease;
+            padding: 2rem;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--chocolate), var(--accent));
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><defs><pattern id="coffee" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="20" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23coffee)"/></svg>') center/cover;
+            opacity: 0.3;
+        }
+
+        .hero-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            max-width: 90%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .hero-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .handwriting-path {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.6);
+            stroke-width: 3;
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+            animation: draw 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .cta-card {
+            background: var(--surface);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .cta-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cta-image {
+            height: 250px;
+            background: linear-gradient(45deg, var(--accent), var(--chocolate));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .cta-content {
+            padding: 2rem;
+        }
+
+        .cta-title {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--chocolate);
+            transform: scale(1.05);
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 4rem 1rem;
+            background: var(--surface);
+        }
+
+        .categories-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 3rem;
+        }
+
+        .categories-grid {
+            display: none;
+        }
+
+        .categories-accordion {
+            display: block;
+        }
+
+        .accordion-item {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            cursor: pointer;
+            background: var(--background);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .accordion-thumb {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: linear-gradient(135deg, var(--accent), var(--chocolate));
+            position: relative;
+        }
+
+        .accordion-content.active {
+            max-height: 200px;
+        }
+
+        .accordion-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .accordion-text {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 4rem 1rem;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item:nth-child(odd) {
+            height: 200px;
+        }
+
+        .gallery-item:nth-child(even) {
+            height: 300px;
+        }
+
+        .gallery-item:nth-child(3n) {
+            height: 250px;
+        }
+
+        .gallery-item {
+            background: linear-gradient(45deg, var(--accent), var(--chocolate));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Social Section */
+        .social-section {
+            padding: 4rem 1rem;
+            background: var(--surface);
+        }
+
+        .social-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-card {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .social-text {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Sub-Footer Section */
+        .subfooter-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        linear-gradient(45deg, var(--chocolate), var(--accent));
+            padding: 4rem 1rem;
+        }
+
+        .subfooter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .subfooter-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            color: white;
+        }
+
+        .panel-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--xanthous);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        .footer-section {
+            background: var(--licorice);
+            padding: 2rem 1rem;
+            text-align: center;
+            color: var(--old-lace);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .nav-content {
+                justify-content: space-between;
+            }
+
+            .logo {
+                order: 1;
+            }
+
+            .nav-links {
+                order: 2;
+            }
+
+            .theme-toggle {
+                order: 3;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .cta-container {
+                flex-direction: column-reverse;
+            }
+
+            .categories-accordion .accordion-item:nth-child(n+5) {
+                display: block;
+            }
+
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .subfooter-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-content {
+                justify-content: space-between;
+            }
+
+            .cta-container {
+                flex-direction: row;
+            }
+
+            .cta-card {
+                flex: 1;
+            }
+
+            .categories-accordion {
+                display: none;
+            }
+
+            .categories-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            .category-card {
+                background: var(--background);
+                border-radius: 15px;
+                padding: 2rem;
+                text-align: center;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+            }
+
+            .category-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .category-icon {
+                width: 80px;
+                height: 80px;
+                background: var(--accent);
+                border-radius: 50%;
+                margin: 0 auto 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 2rem;
+            }
+
+            .masonry-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .social-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .subfooter-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
 </head>
-<body>
+<body data-theme="light">
+    <!-- Navigation Component -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="#" class="logo">Sandstone</a>
+            
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <!-- <li><a href="#cta">About</a></li> -->
+                <li><a href="#categories">Menu</a></li>
+                <!-- <li><a href="#gallery">Gallery</a></li> -->
+                <!-- <li><a href="#social">Reviews</a></li> -->
+                <!-- <li><a href="#contact">Contact</a></li> -->
+            </ul>
 
-<div class="wrapper">
+            <div class="nav-controls">
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            </div>
+        </div>
 
-      <svg 
-         xmlns="http://www.w3.org/2000/svg" 
-         preserveAspectRatio="xMidYMid" 
-         version="1.0" 
-         viewBox="0 0 3040 825"
-      >
-         <path 
-            id="s-path"
-            xfill="none" 
-            xstroke="#000" 
-            xstroke-linecap="round" 
-            xstroke-width="38" 
-            d="M519 333s-21 17 32 15c38-1 167-41 255-82 106-49 151-97 171-138 28-59-23-95-84-100-77-7-236 2-433 70a743 743 0 0 0-311 186c-26 25-56 74-8 115 47 40 312 64 349 85 45 27 83 71 33 142-51 72-203 142-240 152-62 17-182 39-231-5-57-52 6-123 70-147"
-         />
-         <path 
-            id="andstone-path"
-            xfill="none" 
-            xstroke="#000" 
-            xstroke-linecap="round" 
-            xstroke-width="38" 
-            d="M778 430c-24-4-28-3-59 8-50 25-117 89-115 134 3 62 76-6 137-72 37-39 52-49 76-80 23-10-49 38-66 114-11 51 41 49 58 44 58-16 134-65 183-114 25-25 36-38 55-52 9-7-108 143-116 185-9 46 48-86 154-152 97-60-10 62-18 112-2 16 0 48 41 29 54-25 89-50 125-73 40-26 99-84 140-94 0 0 46-3-28 24-47 17-86 88-95 121-12 49 48 31 73 10 16-13 82-79 145-152 77-90 152-188 175-229 47-86 1-78-50-26a955 955 0 0 0-197 320c-25 77 5 100 31 97 27-4 74-26 110-46 70-38 146-126 188-140 11-4-24 18-24 18-124 131-61 251-117 198-18-20-29-28-61-53-7-5 76 76 190 18 46-23 177-104 202-136 76-95 167-258 188-296 26-45-60 61-111 157-47 86-65 129-86 168-17 32-19 46-35 88-22 55 27 68 72 46 29-13 125-61 190-111 56-43 75-61 102-73 33-15-33 35-33 35-33 43-66 81-56 119 11 37 66 1 75-7 26-22 53-52 77-95 19-36 15-54-8-47-10 3-22 20-13 38 10 22 58 22 80 12 74-33 87-31 97-42 27-31 27-26 27-26s-75 100-109 172 59-63 82-85c17-16 86-75 103-69 17 7-46 79-55 130-11 68 68 17 68 17l66-40s53-33 67-45c13-13 3 8-10 29 0 0 23 5 49 0 26-6 79-56 90-70 16-23 6-56-38-27-141 92-71 76-98 106-22 25-16 85 85 46 59-22 84-40 111-57l79-52 47-32"
-         />
-         <path
-            id="t-cross-path" 
-            xfill="none"
-            xstroke="#000000"
-            xstroke-linecap="round"
-            xstroke-width="30"
-            d="m 1390,307 c 0,0 148,-3 374,-5 h 350 c 163,2 8,17 8,17"
-            xstyle="display:inline; border: 1px dotted black; "
-            inkscape:label="t-cross-path" 
-         />
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#hero" onclick="closeMobileMenu()">Home</a></li>
+                <li><a href="#cta" onclick="closeMobileMenu()">About</a></li>
+                <li><a href="#categories" onclick="closeMobileMenu()">Menu</a></li>
+                <li><a href="#gallery" onclick="closeMobileMenu()">Gallery</a></li>
+                <li><a href="#social" onclick="closeMobileMenu()">Reviews</a></li>
+                <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-      <path 
-         id="underline"
-         fill="none" 
-         xstroke="#fff" 
-         xstroke-linecap="round" 
-         xstroke-linejoin="round" 
-         xstroke-width="6" 
-         xd="M890 700 c37-160 127-29 163-26"
-         d="m 523.65355,805.62082 c 0,0 365.40658,-143.86084 2203.94845,-120.84311"
-      />
-      </svg>
+    <!-- Hero Section Component -->
+    <section id="hero" class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-glass">
+            <h1 class="hero-title">Welcome to Sandstone of Frodsham</h1>
+            <p class="hero-subtitle">Eat in or Takeaway</p>
+        </div>
 
+        <!-- <svg class="hero-svg" viewBox="0 0 3040 825"> -->
+            <!-- <path class="handwriting-path" d="M100 400 Q 300 200 500 400 T 900 400 Q 1100 200 1300 400 T 1700 400 Q 1900 200 2100 400 T 2500 400 Q 2700 200 2900 400" /> -->
+        <!-- </svg> -->
 
-   </div>
+      </section>
 
+    <!-- CTA Section Component -->
+    <section id="cta" class="cta-section">
+        <div class="cta-container">
+            <div class="cta-card">
+                <div class="cta-content">
+                    <h2 class="cta-title">Spread with Passion</h2>
+                    <p class="cta-text">Every Sandwich is carefully prepare using premium locally sourced produce.</p>
+                    <button class="cta-button">Discover More</button>
+                </div>
+            </div>
+            <div class="cta-card">
+                <div class="cta-image">
+                    ☕ Majestic Coffee
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section Component -->
+    <section id="categories" class="categories-section">
+        <div class="categories-container">
+            <h2 class="section-title">Our Menu</h2>
+            
+            <!-- Desktop Grid -->
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🥐</div>
+                    <h3>Breakfast</h3>
+                    <p>Breakfast Classics</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🫖</div>
+                    <h3>Omlettes</h3>
+                    <p>Choose from 3 Fillings</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+🍞
+                    </div>
+                    <h3>Sandwiches</h3>
+                    <p>Served with Side Salad</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🥪</div>
+                    <h3>Toasted Sandwiches</h3>
+                    <p>Choice of Fillings</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🥖</div>
+                    <h3>Toasted Paninis</h3>
+                    <p>Choice of Fillings</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🥗</div>
+                    <h3>Salads</h3>
+                    <p>Fresh and healthy options</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🧀</div>
+                    <h3>Ploughmans</h3>
+                    <p>All the Fillings</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍰</div>
+                    <h3>Cakes</h3>
+                    <p>Comfort food</p>
+                </div>
+                <!-- 
+                🍜
+                🥞
+                -->
+                <div class="category-card">
+                    <div class="category-icon">
+                      ☕</div>
+                    <h3>Drinks</h3>
+                    <p>Start your day right</p>
+                </div>
+            </div>
+
+            <!-- Mobile/Tablet Accordion -->
+            <div class="categories-accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-thumb">☕</div>
+                        <div>
+                            <h3>Premium Coffee</h3>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-bg"></div>
+                        <div class="accordion-text">
+                            <p>Our signature coffee blends are carefully crafted from the finest beans, roasted to perfection to deliver an exceptional coffee experience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-thumb">🫖</div>
+                        <div>
+                            <h3>Fine Teas</h3>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-bg"></div>
+                        <div class="accordion-text">
+                            <p>Explore our curated selection of premium teas from around the world, each offering unique flavors and aromatic experiences.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-thumb">🥐</div>
+                        <div>
+                            <h3>Fresh Pastries</h3>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-bg"></div>
+                        <div class="accordion-text">
+                            <p>Daily baked pastries made with the finest ingredients. From croissants to muffins, each bite is a delightful experience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-thumb">🥪</div>
+                        <div>
+                            <h3>Gourmet Sandwiches</h3>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-bg"></div>
+                        <div class="accordion-text">
+                            <p>Artisanal sandwiches made with premium ingredients and fresh bread, perfect for a satisfying meal any time of day.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-thumb">🍰</div>
+                        <div>
+                            <h3>Homemade Desserts</h3>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-bg"></div>
+                        <div class="accordion-text">
+                            <p>Indulge in our selection of homemade desserts, crafted with love and the finest ingredients for the perfect sweet ending.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-thumb">🥗</div>
+                        <div>
+                            <h3>Fresh Salads</h3>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-bg"></div>
+                        <div class="accordion-text">
+                            <p>Healthy and delicious salads made with fresh, locally sourced ingredients for a nutritious and satisfying meal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-thumb">🧊</div>
+                        <div>
+                            <h3>Cold Beverages</h3>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-bg"></div>
+                        <div class="accordion-text">
+                            <p>Cool down with our refreshing selection of cold beverages, from iced coffees to fresh juices and smoothies.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-thumb">🍜</div>
+                        <div>
+                            <h3>Comfort Soups</h3>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-bg"></div>
+                        <div class="accordion-text">
+                            <p>Warm your soul with our selection of hearty soups, made fresh daily with seasonal ingredients and rich flavors.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-thumb">🥞</div>
+                        <div>
+                            <h3>Breakfast Specials</h3>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-bg"></div>
+                        <div class="accordion-text">
+                            <p>Start your day with our hearty breakfast options, from fluffy pancakes to eggs benedict, made to fuel your morning.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sub-Footer Section Component -->
+    <section id="contact" class="subfooter-section">
+        <div class="subfooter-container">
+            <div class="subfooter-panel">
+                <h3 class="panel-title">📍 Location</h3>
+                <div class="map-placeholder">Interactive Map</div>
+            </div>
+
+            <div class="subfooter-panel">
+                <h3 class="panel-title">📮 Address</h3>
+                <p>123 Sandstone Street<br>
+                Frodsham, FRA HAM</p>
+            </div>
+
+            <div class="subfooter-panel">
+                <h3 class="panel-title">🕒 Opening Hours</h3>
+                <p><strong>Monday - Friday:</strong><br>6:00 AM - 9:00 PM</p>
+                <p><strong>Saturday - Sunday:</strong><br>7:00 AM - 10:00 PM</p>
+            </div>
+
+            <div class="subfooter-panel">
+                <h3 class="panel-title">📞 Contact</h3>
+                <p><strong>Phone:</strong> (555) 123-4567</p>
+                <p><strong>Email:</strong> hello@example.com</p>
+                <div style="margin-top: 1rem;">
+                    <strong>Follow Us:</strong><br>
+                    📘 Facebook | 📷 Instagram<br>
+                    🐦 Twitter | 📍 Google Maps
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section Component -->
+    <footer class="footer-section">
+        <p>&copy; 2025 Djesta Woz Ere. All rights reserved. | Crafted with ❤️ for Sausage lovers</p>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const themeToggle = document.querySelector('.theme-toggle');
+            document.body.setAttribute('data-theme', savedTheme);
+            themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            mobileMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            mobileMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+
+        // Accordion Toggle
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            
+            // Close all accordion items
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.nav-container');
+            if (window.scrollY > 50) {
+                nav.style.background = document.body.getAttribute('data-theme') === 'dark' 
+                    ? 'rgba(20, 20, 20, 0.98)' 
+                    : 'rgba(255, 255, 255, 0.98)';
+            } else {
+                nav.style.background = document.body.getAttribute('data-theme') === 'dark' 
+                    ? 'rgba(20, 20, 20, 0.95)' 
+                    : 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Gallery item hover effects with random heights
+        function randomizeGalleryHeights() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const heights = [200, 250, 300, 350];
+            
+            galleryItems.forEach(item => {
+                const randomHeight = heights[Math.floor(Math.random() * heights.length)];
+                item.style.height = randomHeight + 'px';
+            });
+        }
+
+        // Add scroll animations
+        function addScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Add animation styles and observe elements
+            const animatedElements = document.querySelectorAll('.cta-card, .category-card, .gallery-item, .social-card, .subfooter-panel');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        }
+
+        // Parallax effect for hero section
+        function addParallaxEffect() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroSection = document.querySelector('.hero-section');
+                const heroSvg = document.querySelector('.hero-svg');
+                
+                if (heroSection) {
+                    heroSection.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+                
+                if (heroSvg) {
+                    heroSvg.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+            });
+        }
+
+        // Initialize all features
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            randomizeGalleryHeights();
+            addScrollAnimations();
+            addParallaxEffect();
+            
+            // Add some interactive hover effects
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05) rotate(2deg)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // Add typing effect to hero subtitle
+            const subtitle = document.querySelector('.hero-subtitle');
+            const text = subtitle.textContent;
+            subtitle.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    subtitle.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            
+            setTimeout(typeWriter, 2000);
+        });
+
+        // Add some fun Easter eggs
+        let clickCount = 0;
+        document.querySelector('.logo').addEventListener('click', function(e) {
+            e.preventDefault();
+            clickCount++;
+            
+            if (clickCount === 5) {
+                this.style.animation = 'bounce 1s ease-in-out';
+                setTimeout(() => {
+                    this.style.animation = '';
+                    clickCount = 0;
+                }, 1000);
+            }
+        });
+
+        // Add bounce animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce {
+                0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+                40%, 43% { transform: translate3d(0,-30px,0); }
+                70% { transform: translate3d(0,-15px,0); }
+                90% { transform: translate3d(0,-4px,0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
-
-<!--
-
-
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   preserveAspectRatio="xMidYMid"
-   version="1.0"
-   viewBox="0 0 3040 825"
-   id="svg5"
-   sodipodi:docname="sandstone-01.svg"
-   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs5" />
-  <sodipodi:namedview
-     id="namedview5"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.32399934"
-     inkscape:cx="643.51982"
-     inkscape:cy="72.531011"
-     inkscape:window-width="1728"
-     inkscape:window-height="850"
-     inkscape:window-x="0"
-     inkscape:window-y="38"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg5" />
-  
-  <path
-     id="path2"
-     
-     d="M 815,11 C 583.56988,30.910528 346.27993,94.612282 164.59087,245.65849 c -40.16777,31.60476 -86.293059,90.13768 -54.56614,141.95175 37.4684,53.93921 109.54217,57.98766 168.4798,69.2306 82.13528,12.13963 175.93791,9.752 241.92694,67.40166 34.41936,55.50198 -20.83308,113.07904 -62.67783,145.39469 -76.72854,59.84494 -170.5103,96.12122 -265.42323,114.54245 -47.33082,6.31975 -104.428044,4.48587 -138.877742,-32.9083 C 19.544271,693.53368 105.30089,665.99751 119.28487,627.39792 69.27357,621.23472 19.694877,672.4989 15.312773,721.64121 8.7929826,777.91182 69.599815,803.39256 115.558,808.84602 227.36495,819.65447 338.50758,778.13328 432.72527,720.79042 482.17253,685.72674 538.59109,646.66002 557.9266,586.48724 573.60062,533.72955 533.37344,485.64105 484.57288,471.54105 378.34112,428.51667 255.41762,452.8258 153.03973,397.30962 116.63364,364.62071 141.93871,311.40889 171.92775,283.72207 304.48643,156.63362 483.82469,94.96136 660.37054,58.854179 745.21033,44.713001 832.54329,31.176825 918.31912,43.681541 c 59.54253,16.024444 53.63244,93.403469 9.91414,123.659319 -72.60105,78.93986 -180.58669,106.85813 -278.19719,141.62113 -44.5607,11.0518 -93.07065,36.10129 -131.6822,17.82203 -44.07706,45.71347 43.15082,39.32408 69.92241,30.10681 85.27856,-18.22515 161.50664,-64.49218 245.51738,-86.3725 C 903.9894,234.8218 984.89331,188.13952 1000.8806,103.94311 1003.6285,45.778083 937.41533,19.385192 888.85788,16.275562 864.23859,14.517042 839.61929,12.758521 815,11 Z" />
-  <path
-     fill="none"
-     stroke="#000000"
-     stroke-linecap="round"
-     stroke-width="38"
-     d="m 519,333 c 0,0 -21,17 32,15 38,-1 167,-41 255,-82 C 912,217 957,169 977,128 1005,69 954,33 893,28 816,21 657,30 460,98 266,166 183,249 149,284 c -26,25 -56,74 -8,115 47,40 312,64 349,85 45,27 83,71 33,142 -51,72 -203,142 -240,152 -62,17 -182,39 -231,-5 -57,-52 6,-123 70,-147"
-     id="path3"
-     style="display:none" />
-  <path
-     fill="none"
-     stroke="#000000"
-     stroke-linecap="round"
-     stroke-width="38"
-     d="m 778,430 c -24,-4 -28,-3 -59,8 -50,25 -117,89 -115,134 3,62 76,-6 137,-72 37,-39 52,-49 76,-80 23,-10 -49,38 -66,114 -11,51 41,49 58,44 58,-16 134,-65 183,-114 25,-25 36,-38 55,-52 9,-7 -108,143 -116,185 -9,46 48,-86 154,-152 97,-60 -10,62 -18,112 -2,16 0,48 41,29 54,-25 89,-50 125,-73 40,-26 99,-84 140,-94 0,0 46,-3 -28,24 -47,17 -86,88 -95,121 -12,49 48,31 73,10 16,-13 82,-79 145,-152 77,-90 152,-188 175,-229 47,-86 1,-78 -50,-26 a 955,955 0 0 0 -197,320 c -25,77 5,100 31,97 27,-4 74,-26 110,-46 70,-38 146,-126 188,-140 11,-4 -24,18 -24,18 -124,131 -61,251 -117,198 -18,-20 -29,-28 -61,-53 -7,-5 76,76 190,18 46,-23 177,-104 202,-136 76,-95 167,-258 188,-296 26,-45 -60,61 -111,157 -47,86 -65,129 -86,168 -17,32 -19,46 -35,88 -22,55 27,68 72,46 29,-13 125,-61 190,-111 56,-43 75,-61 102,-73 33,-15 -33,35 -33,35 -33,43 -66,81 -56,119 11,37 66,1 75,-7 26,-22 53,-52 77,-95 19,-36 15,-54 -8,-47 -10,3 -22,20 -13,38 10,22 58,22 80,12 74,-33 87,-31 97,-42 27,-31 27,-26 27,-26 0,0 -75,100 -109,172 -34,72 59,-63 82,-85 17,-16 86,-75 103,-69 17,7 -46,79 -55,130 -11,68 68,17 68,17 l 66,-40 c 0,0 53,-33 67,-45 13,-13 3,8 -10,29 0,0 23,5 49,0 26,-6 79,-56 90,-70 16,-23 6,-56 -38,-27 -141,92 -71,76 -98,106 -22,25 -16,85 85,46 59,-22 84,-40 111,-57 l 79,-52 47,-32"
-     id="path4"
-     style="display:none" />
-  <path
-     fill="none"
-     stroke="#000000"
-     stroke-linecap="round"
-     stroke-width="30"
-     d="m 1390,307 c 0,0 148,-3 374,-5 h 350 c 163,2 8,17 8,17"
-     id="path5"
-     style="display:none" />
-</svg>
-
-
--->
-
-
-<!--
-
-      <svg 
-         xmlns="http://www.w3.org/2000/svg" 
-         preserveAspectRatio="xMidYMid" 
-         version="1.0" 
-         viewBox="0 0 3040 825"
-         aria-hidden="true" 
-         role="img"
-         >
-         <path 
-            id="s-path"
-            xfill="#fc0" 
-            d="m815 11-18 2a923 923 0 0 0-173 25l-11 3a1183 1183 0 0 0-145 40 1187 1187 0 0 0-193 85 786 786 0 0 0-120 88 310 310 0 0 0-46 59l-2 3-6 16-2 7c-1 4 0 21 1 29 1 6 8 20 13 26 11 14 30 27 52 36a318 318 0 0 0 70 19l13 3 34 5 14 2a1918 1918 0 0 0 97 13l14 2 18 4 5 1a176 176 0 0 1 39 12l31 16a63 63 0 0 1 30 39l2 4v21l-5 14-4 11-1 3-2 2-3 5c-6 12-25 34-46 53-14 13-50 38-68 49l-13 7a768 768 0 0 1-140 57l-11 3-12 3-10 2a589 589 0 0 1-58 7c-19 0-29-1-46-4-18-4-38-12-51-22-8-6-12-10-14-15s-3-6-2-18c0-9 1-13 2-15l2-6 2-4 4-7c6-9 11-15 23-26 12-10 17-14 39-29l12-10c1-3-1-7-5-9-5-2-12-2-20 1a94 94 0 0 0-22 11c-3 0-27 17-37 27-7 6-16 16-19 21-6 13-10 23-12 35-2 13-2 23 3 34l5 10 4 5c8 12 20 21 35 28 11 5 34 13 44 14a386 386 0 0 0 128-6l39-9c60-17 137-54 188-91a389 389 0 0 0 87-89l5-10 2-6 3-5 4-26a123 123 0 0 0-6-33l-12-22c-8-10-18-19-29-26a230 230 0 0 0-85-30 389 389 0 0 0-38-6l-13-3-9-1-21-2-25-3a1468 1468 0 0 0-38-5l-17-2-16-3-15-3c-37-7-63-17-85-31-6-5-7-5-11-11-7-11-8-13-8-28l1-15 3-7a80 80 0 0 1 15-28 459 459 0 0 1 130-110l14-8a243 243 0 0 1 15-9 1416 1416 0 0 1 121-55 2995 2995 0 0 0 91-33l10-3 21-6a561 561 0 0 1 35-9l19-5 10-2a512 512 0 0 1 45-9l12-2 29-5 16-2a548 548 0 0 1 69-8 462 462 0 0 1 118 4 187 187 0 0 1 30 10c12 5 19 12 24 23 4 7 4 8 4 16l-2 14-4 11-4 9-5 9-5 7-3 5-2 3-4 5-3 4-9 10-26 26-6 4-30 21-10 6a1094 1094 0 0 1-115 51l-28 10-38 13-38 12a819 819 0 0 1-76 21c-19 4-17 4-20-1-6-6-17-10-25-8s-11 4-12 10c-2 8 0 13 6 19 9 7 15 8 31 8 10 0 18 0 26-2a432 432 0 0 0 53-13 2344 2344 0 0 0 200-70l10-4a605 605 0 0 0 93-55l11-8a391 391 0 0 0 51-59c6-8 13-21 15-29l4-12c2-13 2-23-4-37-6-18-34-39-63-48-12-4-13-5-22-6l-13-3a517 517 0 0 0-84-6z"/>
-
-         <path 
-            id="andstone-path"
-            xfill="#ffd42a" 
-            d="M1636 115c-5 1-15 7-20 10a405 405 0 0 0-89 97l-5 5-2 2-4 6-4 6-3 4a300 300 0 0 0-25 36l-6 9-1 3h-16l-43 1c-28 1-29 2-32 7-1 3 0 6 4 11 5 6 7 6 39 6l29 1c0 2-5 13-8 16l-2 3-2 5-5 8-3 6c-1 0-3 3-4 7l-12 23a234 234 0 0 0-14 31c-4 4-9 15-9 18l-3 8-4 9-2 6a2088 2088 0 0 0-9 24l-5 16a482 482 0 0 1-84 78c-12 8-17 10-23 10l-6 1v-11c-1-8 0-12 1-15l1-7 1-4 3-5 4-8 1-3 4-7 4-7a303 303 0 0 1 55-68l15-15c9-8 17-10 20-5 2 3 3 3 7 3s14-2 16-4c5-4 6-14 3-18l-6-5c-4-2-7-2-15-2-14 0-21 2-33 10l-15 8a1524 1524 0 0 1-240 154c-6 1-7-1-6-12a55 55 0 0 1 6-25l2-7 4-9a235 235 0 0 1 20-36l4-8 5-10 3-4 2-5c5-10 7-18 7-30 0-11-1-15-6-18-4-2-17-2-24 1-18 7-41 22-60 39-6 6-16 13-17 13s-2-2-1-3l1-5 1-3 7-13 7-14c2-5 9-11 12-12 5-1 7-3 7-7 1-9-16-15-27-10l-13 9-7 11-1 1c0 4-3 8-8 11l-18 16a172 172 0 0 1-14 12c-2 3-45 38-53 43l-10 8a318 318 0 0 1-44 27 560 560 0 0 1-53 27c-10 4-17 6-24 6-9 0-14-1-19-6-3-3-4-5-5-11-2-8-2-9 0-17a69 69 0 0 1 5-18l3-8 7-14 2-5 2-5 2-3 3-4 1-2 13-16c24-28 31-37 32-42 3-9-6-17-19-17l-9 1-6 8c-9 11-30 34-40 41a480 480 0 0 0-54 56l-20 21c-26 30-57 55-66 54-3 0-3-1-3-8-1-9 2-19 9-33 3-7 10-18 13-21l5-5 16-20 4-4 27-25a246 246 0 0 1 58-33h8l9 2c7 1 10 1 11-3 2-2 1-10-1-13s-13-10-17-10c-6-1-18 1-29 4-11 4-10 3-24 10l-27 16a302 302 0 0 0-83 89l-8 18c-3 7-3 21-1 30s11 21 19 25c13 5 26 4 44-5 12-6 23-15 48-39a431 431 0 0 1 31-29c4-5 5-5 4 0l-2 16c0 12 1 12 4 18 7 13 17 21 33 26 7 2 10 2 24 2 16 0 17 0 27-3a539 539 0 0 0 116-65c15-10 27-17 23-12l-2 5-4 7-5 6a128 128 0 0 1-7 13l-9 17a118 118 0 0 0-10 20l-2 2-4 10c-3 7-4 9-2 11 2 4 11 9 19 9 3 0 4-1 11-7a279 279 0 0 0 29-34l18-22a560 560 0 0 1 99-100l6-3c4 0 4 0 4 2l-1 4-4 8-8 15-6 10-3 5-3 3-7 14c-3 3-8 14-8 15l-3 8-4 8-2 9c-3 11-3 18 0 28l4 8 4 5c3 5 9 10 15 11 5 1 20 1 25-1l8-3 17-7 26-12a1924 1924 0 0 0 100-61 84 84 0 0 1-9 20l-1 4c-3 5-6 15-7 21-2 12-1 20 3 29 9 17 31 23 54 13 13-5 32-17 47-30l10-9 12-10c6-6 11-8 13-6l2 7c1 12 16 30 29 36 11 4 13 4 25 4 13 0 15 0 29-4 12-4 39-16 46-21l7-2c3 0 5 2 34 31l34 34c11 8 27 9 35 2 2-2 7-12 8-17 1-3 2-4 19-5l18-2 10-2c36-8 81-29 140-68a518 518 0 0 0 61-43l4-2-4 15-5 10-3 7-6 18-4 12c-5 11-7 28-4 38 2 10 12 22 23 27 11 4 13 4 27 4 13 0 18 0 31-4l31-10 9-4a1758 1758 0 0 0 166-94l7-4-1 3c-1 6-2 7-3 7v2l-2 5-3 7-1 4c-5 7-5 41-1 46l2 3 4 5c4 4 9 7 18 11 4 2 24 2 30 0 18-5 26-9 38-18 8-6 26-23 34-32l8-10 29-36c7-9 5-9 27-13l24-4c15-3 39-11 60-19 15-6 19-7 19-5s-3 8-5 9l-1 3-2 3c-2 1-2 2-2 3l-2 3-11 14a334 334 0 0 1-12 20 98 98 0 0 0-14 23l-12 23-3 5c-6 11-12 26-12 29 0 5 10 11 20 11 4 0 4 0 11-7a427 427 0 0 0 43-52l3-4 20-25 10-10c7-9 32-35 43-44a130 130 0 0 1 34-24l2-1v4c-1 3-1 5-5 11l-5 10-7 12-4 7-2 3-5 9-5 9-2 4-4 9-4 10-2 4c-5 10-7 28-4 37 3 10 10 18 18 23 5 2 6 2 16 2l15-1c17-5 41-17 68-32a1307 1307 0 0 0 66-42c3 0 4 0 4 2l-4 10c-1 4-2 16-1 21 1 14 14 27 31 35 7 2 7 2 28 2l25-1a297 297 0 0 1 21-5 639 639 0 0 1 35-13l12-6 17-7a1118 1118 0 0 0 57-31l10-7 30-19 17-12 14-9 24-16 35-26 1-7c0-3-1-4-4-7-8-6-18-4-34 7l-34 23-23 16a891 891 0 0 1-139 81 54 54 0 0 1-11 5l-6 2-8 3c-15 7-32 11-44 11-15 0-17-1-21-10-4-8-5-18-1-26l3-7 2-6c3-3 3-3 7-3l9 2c15 4 57-15 87-39 17-13 32-30 39-41 7-14 7-13 7-24 0-10 0-10-3-14-2-3-5-6-10-8-6-3-8-4-17-4-17 0-28 4-52 20l-13 8a3054 3054 0 0 1-138 98 928 928 0 0 1-96 55c-9 2-9 1-8-13 0-9 0-12 2-14l2-4 2-8 3-6a311 311 0 0 1 27-51c0-2 2-4 3-5l2-5 1-3 2-3a302 302 0 0 1 5-13c2 0 4-12 4-21 0-15-3-19-16-18l-13 1c-12 4-31 16-45 26a347 347 0 0 0-31 25l-2 2-1-4 2-8 4-5 2-5c0-2 3-6 6-9l7-11c1-5 2-5 10-8 7-3 6-12-3-16-7-4-16-4-23 0-4 2-11 9-11 10l-8 11-7 4-5 3-9 5a6466 6466 0 0 0-36 16l-44 15c-21 6-27 6-27 3l3-11c1-2 2-6 2-15 0-11 0-12-3-17-8-14-22-20-37-15-12 4-25 23-26 40-1 14 2 25 9 34l2 4-7 10-5 6-5 6-9 11c-33 40-63 62-78 59l-4-4c-2-4-2-19 0-23l2-8 5-12 3-9 2-2 2-5 3-4 1-2 3-6 3-4 15-21c13-16 40-43 48-47 5-3 8-6 8-10 0-3-1-4-4-7-4-3-9-5-14-5-3 0-6 1-13 6l-10 4c-5 1-13 6-27 17a627 627 0 0 1-37 28l-78 52-19 12-5 3-7 4-4 2-11 6-79 41c-20 9-46 17-54 17-7 0-10-2-11-7-2-4-1-19 1-23l2-8 3-8 2-6 1-3 2-4 5-12 4-11 1-3 2-3 2-7 3-6 1-2 3-5a864 864 0 0 1 47-92l4-8 4-7 4-7 4-7a218 218 0 0 1 10-17l4-7 6-11 4-7 6-10 4-7 50-1 50 1 1 2c0 3 6 9 12 11 5 1 14 1 23-1a381 381 0 0 0 44-11c4 0 9-5 9-8 0-8-9-15-22-16l-78-2-73-2c-1-1 3-8 5-10l2-2 1-3 4-7 5-8 2-5c0-2 1-3 2-3l1-2c0-1 2-6 6-10l6-10 2-4 3-4a1363 1363 0 0 1 49-75c0-9-12-15-23-12-4 1-11 7-17 15l-3 5a596 596 0 0 0-63 98l-4 6-4 8-6 10-4 8-3 6h-9a12117 12117 0 0 1-341 3h-49v-2l1-3 3-4 4-5 17-23 18-25 9-15 9-12 2-4 2-3 5-9 4-7 4-8 3-7 6-17c4-13-3-26-15-32-4-2-6-2-15-3l-12 1zm12 25v4l-3 7-2 7-3 6-2 5-5 9a209 209 0 0 1-16 25l-11 16a164 164 0 0 0-15 21l-6 9a1130 1130 0 0 1-29 40l-3 4h-20c-19 0-19 0-19-2l1-4 7-9a332 332 0 0 1 29-40 157 157 0 0 1 13-17l20-24 40-43c16-16 24-20 24-14zm325 176-6 13a565 565 0 0 0-28 47 532 532 0 0 1-20 36c-8 17-7 16-20 26l-10 9-23 19-13 10a1000 1000 0 0 1-101 72c-22 14-38 22-62 30-27 9-36 11-49 13-11 1-12 0-10-6l3-8 2-7 2-9 3-9 2-7 2-7 2-6 5-13 2-9 3-5 1-4 3-8 13-28c6-12 18-27 27-36 7-7 11-9 25-17 15-7 16-9 16-14 0-3 0-5-3-7-6-6-18-9-24-6-19 8-33 18-50 35-9 9-14 14-29 25l-6 6a132 132 0 0 1-13 9c-6 7-63 49-82 62-30 20-58 37-74 43-14 6-19 7-30 7-9 0-10 0-15-3l-6-5-2-2c-2-2-3-7-5-16-2-8-2-12-1-18l2-11c2-5 2-6 7-12l41-45 13-14a356 356 0 0 0 12-15l5-6 5-6 14-16 16-18 4-5 6-8a129 129 0 0 1 10-13l4-4a135 135 0 0 0 11-15l13-16c4-5 5-6 9-6a30256 30256 0 0 1 398-2zm-444 2c4 0 4 2 2 4l-4 5a479 479 0 0 1-32 39 303 303 0 0 0-23 28l-23 26-9 10-7 8h-1l2-7 4-8 2-5 2-5c2-1 3-5 4-7l2-5 2-4 6-10 2-4 2-5 2-2 2-5a357 357 0 0 0 19-33l4-7v-1l2-2 3-6 3-4h14a340 340 0 0 0 20 0zm1297 101c2 1 2 1 0 5l-1 5c0 3-14 20-26 32-16 16-37 30-59 41-11 5-14 6-18 6l-4-2a376 376 0 0 1 91-83c5-3 12-6 15-6l2 1zm-1205 80-3 10-1 5-2 6-3 8-1 5-2 8-3 8-6 23-3 14c-2 3-2 3-6 3-10-1-29-13-46-27-6-6-8-9-7-11l13-8a565 565 0 0 0 71-52c1 1 0 4-1 8z"/>
-
-      </svg>
-
-
--->
-
-
-
-<!--
-
-
-
-
-
-
-
-
-         <path 
-            fill="none" 
-            stroke="#000" 
-            stroke-linecap="round" 
-            stroke-width="38" 
-            d="M519 333s-21 17 32 15c38-1 167-41 255-82 106-49 151-97 171-138 28-59-23-95-84-100-77-7-236 2-433 70-194 68-277 151-311 186-26 25-56 74-8 115 47 40 312 64 349 85 45 27 83 71 33 142-51 72-203 142-240 152-62 17-182 39-231-5-57-52 6-123 70-147"
-            />
-         <path 
-            fill="none" 
-            stroke="#000" 
-            stroke-linecap="round" 
-            stroke-width="38" 
-            d="M778 430c-24-4-28-3-59 8-50 25-117 89-115 134 3 62 76-6 137-72 37-39 52-49 76-80 23-10-49 38-66 114-11 51 41 49 58 44 58-16 134-65 183-114 25-25 36-38 55-52 9-7-108 143-116 185-9 46 48-86 154-152 97-60-10 62-18 112-2 16 0 48 41 29 54-25 89-50 125-73 40-26 99-84 140-94 0 0 46-3-28 24-47 17-86 88-95 121-12 49 48 31 73 10 16-13 82-79 145-152 77-90 152-188 175-229 47-86 1-78-50-26a955 955 0 0 0-197 320c-25 77 5 100 31 97 27-4 74-26 110-46 70-38 146-126 188-140 11-4-24 18-24 18-124 131-61 251-117 198-18-20-29-28-61-53-7-5 76 76 190 18 46-23 177-104 202-136 76-95 167-258 188-296 26-45-60 61-111 157-47 86-65 129-86 168-17 32-19 46-35 88-22 55 27 68 72 46 29-13 125-61 190-111 56-43 75-61 102-73 33-15-33 35-33 35-33 43-66 81-56 119 11 37 66 1 75-7 26-22 53-52 77-95 19-36 15-54-8-47-10 3-22 20-13 38 10 22 58 22 80 12 74-33 87-31 97-42 27-31 27-26 27-26s-75 100-109 172 59-63 82-85c17-16 86-75 103-69 17 7-46 79-55 130-11 68 68 17 68 17l66-40s53-33 67-45c13-13 3 8-10 29 0 0 23 5 49 0 26-6 79-56 90-70 16-23 6-56-38-27-141 92-71 76-98 106-22 25-16 85 85 46 59-22 84-40 111-57l79-52 47-32"
-            />
-         <path 
-            fill="none" 
-            stroke="#000" 
-            stroke-linecap="round" 
-            stroke-width="30" 
-            d="M1390 307s148-3 374-5h350c163 2 8 17 8 17"
-            />
-
--->
