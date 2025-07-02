@@ -2,13 +2,13 @@
 
 <template>
   <!-- <NavigationSection/> -->
-  <!-- <HeroSection /> -->
-  <HeroSVGSection />
+  <HeroSection />
+  <!-- <HeroSVGSection /> -->
   <CTASection />
   <CategoriesSection />
   <!-- <GallerySection /> -->
   <!-- <SocialSection /> -->
-  <SubFooterSection />
+  <!-- <SubFooterSection /> -->
   <FooterSection />
 </template>
 

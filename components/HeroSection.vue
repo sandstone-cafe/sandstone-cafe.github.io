@@ -1,4 +1,5 @@
 <script setup lang="ts"></script>
+
 <template>
   <section id="hero" class="hero-section">
     <div class="hero-bg"></div>
@@ -7,7 +8,6 @@
       <p class="hero-subtitle">Eat in or Takeaway</p>
     </div>
   </section>  
-
 </template>
 
 <style scoped></style>
