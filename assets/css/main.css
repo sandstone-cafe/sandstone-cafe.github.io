@@ -18,6 +18,8 @@
     --surface: rgba(255, 255, 255, 0.9);
     --text: var(--licorice);
     --text-secondary: var(--chocolate);
+
+    --anochor-text: var(--xanthous);
 }
 
 [data-theme="dark"] {
@@ -25,6 +27,7 @@
     --surface: rgba(30, 30, 30, 0.9);
     --text: var(--old-lace);
     --text-secondary: var(--xanthous);
+    --anochor-text: var(--chocolate);
 }
 
 * {
@@ -487,6 +490,11 @@ body {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                 linear-gradient(45deg, var(--chocolate), var(--accent));
     padding: 4rem 1rem;
+}
+
+a {
+  color: white;
+  transition: color 0.3s ease;
 }
 
 .subfooter-container {

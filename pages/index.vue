@@ -1,9 +1,14 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>
-    Sandstone
-  </div>
+  <!-- <NavigationSection/> -->
+  <HeroSection />
+  <CTASection />
+  <CategoriesSection />
+  <!-- <GallerySection /> -->
+  <!-- <SocialSection /> -->
+  <SubFooterSection />
+  <FooterSection />
 </template>
 
 <style scoped></style>
