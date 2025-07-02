@@ -43,6 +43,17 @@ body {
     transition: all 0.3s ease;
     line-height: 1.6;
 }
+/* body { */
+  /* margin: 0; */
+  /* font-family: sans-serif; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* min-height: 100vh;  */
+  /* Ensures the body takes full viewport height */
+  /* background-color: #f0f0f0;  */
+  /* Just for demo, so you can see the effect */
+/* } */
 
 /* Navigation Styles */
 .nav-container {
@@ -174,7 +185,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><defs><pattern id="coffee" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="20" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23coffee)"/></svg>') center/cover;
+    /* background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><defs><pattern id="coffee" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="20" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23coffee)"/></svg>') center/cover; */
+
+    background: url('/assets/images/store/exterior-with-chairs-v5b-246kb_TP9-hero.webp') center/cover;
     opacity: 0.3;
 }
 
@@ -201,32 +214,6 @@ body {
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 2rem;
 }
-
-.hero-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-    pointer-events: none;
-}
-
-.handwriting-path {
-    fill: none;
-    stroke: rgba(255, 255, 255, 0.6);
-    stroke-width: 3;
-    stroke-dasharray: 2000;
-    stroke-dashoffset: 2000;
-    animation: draw 4s ease-in-out infinite alternate;
-}
-
-@keyframes draw {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
 /* CTA Section */
 .cta-section {
     padding: 4rem 1rem;
@@ -255,6 +242,7 @@ body {
 .cta-image {
     height: 250px;
     background: linear-gradient(45deg, var(--accent), var(--chocolate));
+    background-image: url('/assets/images/store/interior-back-facing-v3-225kb_T3I-cta.webp');
     display: flex;
     align-items: center;
     justify-content: center;
