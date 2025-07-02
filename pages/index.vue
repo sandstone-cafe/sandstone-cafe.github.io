@@ -2,7 +2,8 @@
 
 <template>
   <!-- <NavigationSection/> -->
-  <HeroSection />
+  <!-- <HeroSection /> -->
+  <HeroSVGSection />
   <CTASection />
   <CategoriesSection />
   <!-- <GallerySection /> -->

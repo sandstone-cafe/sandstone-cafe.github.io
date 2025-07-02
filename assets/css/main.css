@@ -37,7 +37,7 @@
 }
 
 body {
-    font-family: 'Georgia', serif;
+    font-family: 'Montserrat';
     background-color: var(--background);
     color: var(--text);
     transition: all 0.3s ease;
