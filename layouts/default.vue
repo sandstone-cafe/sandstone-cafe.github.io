@@ -12,7 +12,6 @@ useHead({
 </script>
 
 <template>
-  <NavigationSection />
   <h1>Layout: defaults</h1>
   <slot />
 </template>
