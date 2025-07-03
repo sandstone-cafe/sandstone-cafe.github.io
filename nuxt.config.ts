@@ -18,13 +18,24 @@ export default defineNuxtConfig({
   },
   // ...
   modules: [
-  '@nuxtjs/google-fonts',
-  'nuxt-gtag'
+    '@nuxt/content',
+    '@nuxtjs/google-fonts',
+    'nuxt-gtag'
   ],
+  // content: {
+  //   experimental: { nativeSqlite: true },
+  // },
   gtag: {
     id: 'G-CZ7GYPR1YD'
   },
   googleFonts: {
+// │ [nuxt:google-fonts] ℹ Montserrat-italic-300_500-cyrillic
+// │ [nuxt:google-fonts] ℹ Montserrat-italic-300_500
+// │ [nuxt:google-fonts] ℹ Montserrat-italic-300_500-latin
+// │ [nuxt:google-fonts] ℹ Montserrat-normal-300_700-cyrillic
+// │ [nuxt:google-fonts] ℹ Montserrat-normal-300_700
+// │ [nuxt:google-fonts] ℹ Montserrat-normal-300_700-latin
+// │ [nuxt:google-fonts] ✔ Download fonts completed.
       display: 'swap',
       useStylesheet: true,
       inject: true,
@@ -36,11 +47,15 @@ export default defineNuxtConfig({
         // // 'Open Sans': [300, 400, 500, 600, 700]
         'Montserrat': {
           wght: '300..700',
-          ital: '300..500',
+          ital: '300..500'
+          // ,
+          // subsets: ['latin']
         },
         // https://fonts.google.com/selection/embed
         'Voltaire': {
           wght: '300..500'
+          // ,
+          // subsets: ['latin']
         }
       }
   },
