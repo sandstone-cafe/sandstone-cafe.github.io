@@ -6,7 +6,7 @@ this is not here
    <!-- <HeroSection /> -->
   <!-- <HeroSVGSection /> -->
   <!--  <CTASection /> -->
-  <!--  <CategoriesSection />
+  <!--  <CategoriesSection /> -->
   <!-- <GallerySection /> -->
   <!-- <SocialSection /> -->
   <!-- <SubFooterSection /> -->
