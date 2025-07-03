@@ -32,12 +32,23 @@
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
-  font-weight: 300 700;
+  font-weight: 300 500;
   font-display: swap;
+  src: local('Montserrat');
 }
+
+@font-face {
+  font-family: 'Voltaire';
+  font-style: normal;
+  font-weight: 300 500;
+  font-display: swap;
+  src: local('Voltaire');
+}
+
 
 @theme {
   --font-montserrat: 'Montserrat', sans-serif;
+  --font-voltaire: 'Voltaire', sans-serif;
 }
 
 [data-theme="dark"] {
@@ -140,7 +151,9 @@ body {
   @apply text-[1.2rem] text-[rgba(255,255,255,0.9)] mb-8 md:text-3xl;
 }
 .hero-subtitle-font {
-  font: var(--font-montserrat);
+  /* font: var(--font-montserrat); */
+  font: var(--font-voltaire);
+  @apply md:text-xl;
 }
 /* CTA Section */
 .cta-section {

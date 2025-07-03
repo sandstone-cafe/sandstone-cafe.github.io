@@ -34,6 +34,10 @@ export default defineNuxtConfig({
         'Montserrat': {
           wght: '300..700',
           ital: '300..500',
+        },
+        // https://fonts.google.com/selection/embed
+        'Voltaire': {
+          wght: '300..500'
         }
       }
   },
