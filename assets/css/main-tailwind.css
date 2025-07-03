@@ -1,0 +1,308 @@
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+
+/* main.css */
+
+@import "tailwindcss";
+
+/* --- */
+
+
+:root {
+  --xanthous: hsla(41, 91%, 61%, 1);
+  --chocolate: hsla(24, 91%, 25%, 1);
+  --old-lace: hsla(34, 100%, 96%, 1);
+  --licorice: hsla(10, 94%, 6%, 1);
+  --princeton-orange: hsla(31, 95%, 56%, 1);
+  --primary: var(--xanthous);
+  --secondary: var(--chocolate);
+  --accent: var(--princeton-orange);
+  --background: var(--old-lace);
+  --surface: rgba(255, 255, 255, 0.9);
+  --text: var(--licorice);
+  --text-secondary: var(--chocolate);
+}
+[data-theme="dark"] {
+  --background: var(--licorice);
+  --surface: rgba(30, 30, 30, 0.9);
+  --text: var(--old-lace);
+  --text-secondary: var(--xanthous);
+}
+* {
+  @apply box-border m-0 p-0;
+}
+body {
+  @apply bg-[color:var(--background)] text-[color:var(--text)] transition-all duration-[0.3s] ease-[ease] leading-[1.6];
+  font-family: "Montserrat";
+}
+/* body { */
+/* margin: 0; */
+/* font-family: sans-serif; */
+/* display: flex; */
+/* justify-content: center; */
+/* align-items: center; */
+/* min-height: 100vh;  */
+/* Ensures the body takes full viewport height */
+/* background-color: #f0f0f0;  */
+/* Just for demo, so you can see the effect */
+/* } */
+
+/* Navigation Styles */
+.nav-container {
+  @apply fixed z-[1000] backdrop-blur-[10px] transition-all duration-[0.3s] ease-[ease] top-0 inset-x-0;
+  background: rgba(255, 255, 255, 0.95);
+}
+[data-theme="dark"] .nav-container {
+  background: rgba(20, 20, 20, 0.95);
+}
+.nav-content {
+  @apply max-w-[1200px] flex justify-between items-center mx-auto my-0 p-4 md:justify-between lg:justify-between;
+}
+.logo {
+  @apply text-2xl font-[bold] text-[color:var(--accent)] no-underline md:order-1;
+}
+.nav-links {
+  @apply hidden gap-8 md:flex md:order-2;
+  list-style: none;
+}
+.nav-links a {
+  @apply font-medium no-underline text-[color:var(--text)] transition-[color] duration-[0.3s] ease-[ease] hover:text-[color:var(--accent)];
+}
+.nav-controls {
+  @apply flex items-center gap-4;
+}
+.hamburger {
+  @apply flex flex-col cursor-pointer gap-[3px] md:hidden;
+}
+.hamburger span {
+  @apply w-[25px] h-[3px] transition-all duration-[0.3s] ease-[ease];
+  background: var(--text);
+}
+.theme-toggle {
+  @apply border-[color:var(--accent)] text-[color:var(--accent)] cursor-pointer transition-all duration-[0.3s] ease-[ease] p-2 rounded-[50%] border-2 border-solid hover:text-[color:var(--background)] md:order-3;
+  background: none;
+}
+.theme-toggle:hover {
+  background: var(--accent);
+}
+.mobile-menu {
+  @apply fixed w-full backdrop-blur-[10px] transition-[left] duration-[0.3s] ease-[ease] p-8 -left-full top-[70px];
+  background: var(--surface);
+}
+.mobile-menu.active {
+  @apply left-0;
+}
+.mobile-menu ul {
+  @apply flex flex-col gap-4;
+  list-style: none;
+}
+.mobile-menu a {
+  @apply no-underline text-[color:var(--text)] text-[1.2rem] px-0 py-2 border-b-[rgba(255,255,255,0.1)] border-b border-solid;
+}
+
+/* Hero Section */
+.hero-section {
+  @apply h-screen relative flex items-center justify-center overflow-hidden;
+  background: linear-gradient(135deg, var(--chocolate), var(--accent));
+}
+.hero-bg {
+  @apply absolute w-full h-full opacity-30 left-0 top-0;
+  /* background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><defs><pattern id="coffee" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="20" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23coffee)"/></svg>') center/cover; */
+  background: url("/assets/images/store/exterior-with-chairs-v5b-246kb_TP9-hero.webp")
+    center/cover;
+}
+.hero-glass {
+  @apply backdrop-blur-[10px] border text-center max-w-[90%] relative z-[2] p-8 rounded-[20px] border-solid border-[rgba(255,255,255,0.2)];
+  background: rgba(255, 255, 255, 0.1);
+}
+.hero-title {
+  @apply text-[2rem] text-[white] mb-4 md:text-5xl;
+}
+.hero-subtitle {
+  @apply text-[1.2rem] text-[rgba(255,255,255,0.9)] mb-8 md:text-2xl;
+}
+/* CTA Section */
+.cta-section {
+  @apply max-w-[1200px] mx-auto my-0 px-4 py-16;
+}
+.cta-container {
+  @apply flex flex-col gap-8 md:flex-col-reverse lg:flex-row;
+}
+.cta-card {
+  @apply overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-transform duration-[0.3s] ease-[ease] rounded-[15px] hover:translate-y-[-5px] lg:flex-1;
+  background: var(--surface);
+}
+.cta-image {
+  @apply h-[250px] bg-[url('/assets/images/store/interior-back-facing-v3-225kb\_T3I-cta.webp')] flex items-center justify-center text-[white] text-2xl;
+  background: linear-gradient(45deg, var(--accent), var(--chocolate));
+}
+.cta-content {
+  @apply p-8;
+}
+.cta-title {
+  @apply text-[1.8rem] text-[color:var(--accent)] mb-4;
+}
+.cta-text {
+  @apply text-[color:var(--text-secondary)] mb-8;
+}
+.cta-button {
+  @apply text-[white] text-[1.1rem] cursor-pointer transition-all duration-[0.3s] ease-[ease] px-8 py-4 rounded-[25px] border-[none] hover:scale-105;
+  background: var(--accent);
+}
+.cta-button:hover {
+  background: var(--chocolate);
+}
+
+/* Categories Section */
+.categories-section {
+  @apply px-4 py-16;
+  background: var(--surface);
+}
+.categories-container {
+  @apply max-w-[1200px] mx-auto my-0;
+}
+.section-title {
+  @apply text-center text-[2.5rem] text-[color:var(--accent)] mb-12;
+}
+.categories-grid {
+  @apply hidden lg:grid lg:grid-cols-[repeat(3,1fr)] lg:gap-8;
+}
+.categories-accordion {
+  @apply block lg:hidden;
+}
+.accordion-item {
+  @apply border overflow-hidden mb-4 rounded-[10px] border-solid border-[rgba(255,255,255,0.1)];
+}
+.accordion-header {
+  @apply flex items-center cursor-pointer transition-all duration-[0.3s] ease-[ease] p-4 hover:text-[white];
+  background: var(--background);
+}
+.accordion-header:hover {
+  background: var(--accent);
+}
+.accordion-thumb {
+  @apply w-[50px] h-[50px] flex items-center justify-center text-[white] text-[1.2rem] mr-4 rounded-[50%];
+  background: var(--accent);
+}
+.accordion-content {
+  @apply max-h-0 overflow-hidden transition-[max-height] duration-[0.3s] ease-[ease] relative;
+  background: linear-gradient(135deg, var(--accent), var(--chocolate));
+}
+.accordion-content.active {
+  @apply max-h-[200px];
+}
+.accordion-bg {
+  @apply absolute inset-0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.accordion-text {
+  @apply relative z-[2] text-[white] backdrop-blur-[5px] p-8;
+}
+
+/* Gallery Section */
+.gallery-section {
+  @apply px-4 py-16;
+}
+.gallery-container {
+  @apply max-w-[1200px] mx-auto my-0;
+}
+.masonry-grid {
+  @apply grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4 mt-8 lg:grid-cols-[repeat(4,1fr)];
+}
+.gallery-item {
+  @apply overflow-hidden shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-transform duration-[0.3s] ease-[ease] rounded-[15px] hover:scale-[1.02] flex items-center justify-center text-[white] text-[1.2rem];
+}
+.gallery-item:nth-child(odd) {
+  @apply h-[200px];
+}
+.gallery-item:nth-child(even) {
+  @apply h-[300px];
+}
+.gallery-item:nth-child(3n) {
+  @apply h-[250px];
+}
+.gallery-item {
+  background: linear-gradient(45deg, var(--accent), var(--chocolate));
+}
+
+/* Social Section */
+.social-section {
+  @apply px-4 py-16;
+  background: var(--surface);
+}
+.social-container {
+  @apply max-w-[1200px] mx-auto my-0;
+}
+.social-grid {
+  @apply grid grid-cols-[1fr] gap-8 mt-8 md:grid-cols-[repeat(2,1fr)] lg:grid-cols-[repeat(4,1fr)];
+}
+.social-card {
+  @apply shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-transform duration-[0.3s] ease-[ease] p-8 rounded-[15px] hover:translate-y-[-5px];
+  background: var(--background);
+}
+.social-header {
+  @apply flex items-center mb-4;
+}
+.social-avatar {
+  @apply w-[50px] h-[50px] flex items-center justify-center text-[white] font-[bold] mr-4 rounded-[50%];
+  background: var(--accent);
+}
+.social-text {
+  @apply text-[color:var(--text-secondary)] italic;
+}
+
+/* Sub-Footer Section */
+.subfooter-section {
+  @apply px-4 py-16;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    linear-gradient(45deg, var(--chocolate), var(--accent));
+}
+a {
+  @apply text-[white] transition-[color] duration-[0.3s] ease-[ease];
+}
+.subfooter-container {
+  @apply max-w-[1200px] grid grid-cols-[1fr] gap-8 mx-auto my-0 md:grid-cols-[repeat(2,1fr)] lg:grid-cols-[2fr_1fr_1fr];
+}
+.subfooter-panel {
+  @apply backdrop-blur-[10px] border text-[white] p-8 rounded-[15px] border-solid border-[rgba(255,255,255,0.2)];
+  background: rgba(255, 255, 255, 0.1);
+}
+.panel-title {
+  @apply text-[1.3rem] text-[color:var(--xanthous)] mb-4;
+}
+.map-placeholder {
+  @apply w-full h-[200px] flex items-center justify-center mt-4 rounded-[10px];
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Footer */
+.footer-section {
+  @apply text-center text-[color:var(--old-lace)] px-4 py-8;
+  background: var(--licorice);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .categories-accordion .accordion-item:nth-child(n + 5) {
+    @apply block;
+  }
+}
+@media (min-width: 1024px) {
+  .category-card {
+    @apply text-center shadow-[0_5px_15px_rgba(0,0,0,0.1)] transition-transform duration-[0.3s] ease-[ease] p-8 rounded-[15px];
+    background: var(--background);
+  }
+  .category-card:hover {
+    @apply translate-y-[-5px];
+  }
+  .category-icon {
+    @apply w-20 h-20 flex items-center justify-center text-[white] text-[2rem] mt-0 mb-4 mx-auto rounded-[50%];
+    background: var(--accent);
+  }
+  .subfooter-container {
+    /* grid-template-columns: repeat(4, 1fr); */
+  }
+}
