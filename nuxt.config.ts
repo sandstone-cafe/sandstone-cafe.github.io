@@ -16,11 +16,9 @@ export default defineNuxtConfig({
       tailwindcss()
     ],
   },
-
   // ...
-  // modules: ['@nuxtjs/tailwindcss'],
   modules: [
-  '@nuxtjs/google-fonts', // '@nuxtjs/google-analytics',
+  '@nuxtjs/google-fonts',
 
   ],
   googleFonts: {
