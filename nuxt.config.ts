@@ -19,8 +19,11 @@ export default defineNuxtConfig({
   // ...
   modules: [
   '@nuxtjs/google-fonts',
-
+  'nuxt-gtag'
   ],
+  gtag: {
+    id: 'G-CZ7GYPR1YD'
+  },
   googleFonts: {
       display: 'swap',
       useStylesheet: true,
