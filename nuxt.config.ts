@@ -27,9 +27,14 @@ export default defineNuxtConfig({
       inject: true,
       download: true,
       families: {
-        'Montserrat': [300, 400, 500, 600, 700],
-        // 'Inter': [300, 400, 500, 600, 700],
-        // 'Open Sans': [300, 400, 500, 600, 700]
+        // 'Montserrat': [300, 400, 500, 600, 700],
+        // 'Montserrat/ligth': [300, 400, 500],
+        // // 'Inter': [300, 400, 500, 600, 700],
+        // // 'Open Sans': [300, 400, 500, 600, 700]
+        'Montserrat': {
+          wght: '300..700',
+          ital: '300..500',
+        }
       }
   },
   // ... other Nuxt configurations

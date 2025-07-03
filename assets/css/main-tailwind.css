@@ -24,7 +24,22 @@
   --surface: rgba(255, 255, 255, 0.9);
   --text: var(--licorice);
   --text-secondary: var(--chocolate);
+
+  --font-default: "Montserrat";
+  /* --font-logo:  */
 }
+/* font-variation-settings */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@theme {
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
 [data-theme="dark"] {
   --background: var(--licorice);
   --surface: rgba(30, 30, 30, 0.9);
@@ -36,7 +51,7 @@
 }
 body {
   @apply bg-[color:var(--background)] text-[color:var(--text)] transition-all duration-[0.3s] ease-[ease] leading-[1.6];
-  font-family: "Montserrat";
+  font-family: var(--font-default);
 }
 /* body { */
 /* margin: 0; */
@@ -62,7 +77,7 @@ body {
   @apply max-w-[1200px] flex justify-between items-center mx-auto my-0 p-4 md:justify-between lg:justify-between;
 }
 .logo {
-  @apply text-2xl font-[bold] text-[color:var(--accent)] no-underline md:order-1;
+  @apply text-2xl font-bold text-[color:var(--accent)] no-underline md:order-1;
 }
 .nav-links {
   @apply hidden gap-8 md:flex md:order-2;
@@ -122,7 +137,10 @@ body {
   @apply text-[2rem] text-[white] mb-4 md:text-5xl;
 }
 .hero-subtitle {
-  @apply text-[1.2rem] text-[rgba(255,255,255,0.9)] mb-8 md:text-2xl;
+  @apply text-[1.2rem] text-[rgba(255,255,255,0.9)] mb-8 md:text-3xl;
+}
+.hero-subtitle-font {
+  font: var(--font-montserrat);
 }
 /* CTA Section */
 .cta-section {

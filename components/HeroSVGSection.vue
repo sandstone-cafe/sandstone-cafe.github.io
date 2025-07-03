@@ -2,8 +2,10 @@
 
 <template>
   <section id="hero" class="hero-section" style="transform: translateY(0px);">
-    <div class="hero-bg"></div>
     <div class="hero-glass">
+        <h1 class="hero-title">Welcome to Sandstone of Frodsham</h1>
+        <h2 class="hero-subtitle ">Eat in or Takeaway</h2>
+
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
           preserveAspectRatio="xMidYMid" 

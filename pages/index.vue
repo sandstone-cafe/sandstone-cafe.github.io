@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <!-- <NavigationSection/> -->
+  <NavigationSection/>
   <HeroSection />
   <!-- <HeroSVGSection /> -->
   <CTASection />
