@@ -1,15 +1,17 @@
 <script setup lang="ts"></script>
 
 <template>
-  <NavigationSection/>
-  <HeroSection />
+this is not here
+    <!--<NavigationSection/> -->
+   <!-- <HeroSection /> -->
   <!-- <HeroSVGSection /> -->
-  <CTASection />
-  <CategoriesSection />
+  <!--  <CTASection /> -->
+  <!--  <CategoriesSection />
   <!-- <GallerySection /> -->
   <!-- <SocialSection /> -->
   <!-- <SubFooterSection /> -->
-  <FooterSection />
+  <!--  <FooterSection /> -->
+
 </template>
 
 <style scoped></style>
