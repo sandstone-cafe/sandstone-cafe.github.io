@@ -17,12 +17,14 @@ if (! route.query.hasOwnProperty('dave') ) {
 <!-- <HeroSVGSection /> -->
 
 <template>
+
   <HeroSection />  
   <CTASection />
   <CategoriesSection />
   <!-- <GallerySection /> -->
   <!-- <SocialSection /> -->
   <SubFooterSection />
+
 </template>
 
 <style scoped></style>
