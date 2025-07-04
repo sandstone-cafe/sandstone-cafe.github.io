@@ -13,7 +13,24 @@ export default defineNuxtConfig({
   // ...
   vite: {
     plugins: [
-      tailwindcss()
+      tailwindcss(),
+      {
+        // https://github.com/tailwindlabs/tailwindcss/discussions/16119
+        name: "vite-plugin-ignore-sourcemap-warnings",
+        apply: "build",
+        configResolved(config) {
+          config.build.rollupOptions.onwarn = (warning, warn) => {
+            if (
+              warning.code === "SOURCEMAP_BROKEN" &&
+              warning.plugin === "@tailwindcss/vite:generate:build"
+            ) {
+              return;
+            }
+
+            warn(warning);
+          };
+        },
+      }
     ],
   },
   // ...

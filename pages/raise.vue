@@ -3,18 +3,18 @@ console.log('Raise.vue')
 const route = useRoute()
 console.log('route.query ' + route.query.dave)
 
-if (! route.query.hasOwnProperty('dave') ) {
-  console.log('Throw Error')
-  throw createError({
-    statusCode: 500,
-    statusMessage: 'Server Error',
-    // statusCode: 404,
-    // statusMessage: 'Page Not Found',
-    data: {
-      myCustomField: true
-    }
-  })
-}
+// if (! route.query.hasOwnProperty('dave') ) {
+//   console.log('Throw Error')
+//   throw createError({
+//     statusCode: 500,
+//     statusMessage: 'Server Error',
+//     // statusCode: 404,
+//     // statusMessage: 'Page Not Found',
+//     data: {
+//       myCustomField: true
+//     }
+//   })
+// }
 </script>
 
 <template>
