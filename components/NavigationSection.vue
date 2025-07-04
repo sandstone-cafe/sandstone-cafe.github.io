@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
+  // import { ref, onMounted } from 'vue';
   // Theme Toggle Functionality
   function toggleTheme() {
       const body = document.body;
@@ -63,12 +63,18 @@
     });
   })
 </script>
+<!-- <HeroSvgClaude  
+    :width="133" 
+    :height="30" 
+  /> -->
 
 <template>
   <!-- Navigation Component -->
   <nav class="nav-container">
     <div class="nav-content">
-      <a href="#" class="logo">Sandstone</a>
+      <a href="#" class="logo">        
+        Sandstone
+      </a>
       
       <ul class="nav-links">
         <li><a href="#hero">Home</a></li>

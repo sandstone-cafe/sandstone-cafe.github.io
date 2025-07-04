@@ -1,25 +1,39 @@
-<script lang="ts" setup>
-// alert('hi')
+<script setup lang="ts">
+// const route = useRoute()
+
+// if (! route.query.hasOwnProperty('dave') ) {
+//   throw createError({
+//     statusCode: 500,
+//     statusMessage: 'Server Error',
+//     // statusCode: 404,
+//     // statusMessage: 'Page Not Found',
+//     data: {
+//       myCustomField: true
+//     }
+//   })
+// }
+</script>
+
+<!-- <HeroSVGSection /> -->
+
+<template>
+  <HeroSection />  
+  <CTASection />
+  <CategoriesSection />
+  <GallerySection />
+  <SocialSection />
+  <SubFooterSection />
+</template>
+
+<style scoped></style>
+
+<!-- <script lang="ts" setup>
 const route = useRoute()
-// console.log('route.path ' + route.path)
-const { data: page } = await useAsyncData(route.path, () => {
+
+const { data: page, status, error, refresh, clear } = await useAsyncData(route.path, async () => {
   return queryCollection('content').path(route.path).first()
 })
-// console.log('page ' + page.value.title)
-// console.dir(page)
 
-// console.log('data')
-// console.dir(data)
-
-
-// useSeoMeta({
-//   title: home.value?.title,
-//   description: home.value?.description
-// })
-
-// const { data: home } = await useAsyncData( 
-//   () => queryCollection('content').path('/').first()
-// )
 </script>
 
 <template>
@@ -28,27 +42,12 @@ const { data: page } = await useAsyncData(route.path, () => {
   <h1>DAVE</h1>
   <h1>DAVE</h1>
   <div>
-    <!-- <header>...</header> -->
 
-    <ContentRenderer v-if="page" :value="page" />
-    <div v-else>Home not found</div>
-  <!-- <ContentRenderer v-if="home" :value="home" />
-  <div v-else>Home not found</div> -->
-
-  <!-- <footer>...</footer> -->
+  <ContentRenderer v-if="page" :value="page" />
+  <div v-else>Home not found</div>
+  
   </div>
   </section>
 </template>
 
-<style scoped></style>
-
-<script setup lang="ts">
-
-
-
-</script>
-
-<!-- <template> -->
-  <!-- <ContentRenderer v-if="home" :value="home" /> -->
-  <!-- <div v-else>Home not found</div> -->
-<!-- </template> -->
+<style scoped></style> -->

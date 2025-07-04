@@ -14,7 +14,7 @@
 //   ]
 // })
 
-  import { ref, onMounted } from 'vue';
+  // import { ref, onMounted } from 'vue';
 
   // Gallery item hover effects with random heights
   function randomizeGalleryHeights() {
@@ -70,6 +70,14 @@
       });
   }
 
+  // Load saved theme
+  function loadTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      const themeToggle = document.querySelector('.theme-toggle');
+      document.body.setAttribute('data-theme', savedTheme);
+      themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  }
+
   onMounted( () => {
     // Initialize all features
     document.addEventListener('DOMContentLoaded', function() {
@@ -108,7 +116,8 @@
 
     // Add some fun Easter eggs
     let clickCount = 0;
-    document.querySelector('.logo').addEventListener('click', function(e) {
+    const logo = document.querySelector('.logo')
+    document.querySelector('.logo')?.addEventListener('click', function(e) {
         e.preventDefault();
         clickCount++;
         console.log(`clickCount :: ${clickCount}`)

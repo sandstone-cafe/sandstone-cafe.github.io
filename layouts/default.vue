@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 useHead({
   bodyAttrs: {
     // dataTheme: 'light',
@@ -13,8 +14,8 @@ useHead({
 
 <template>
   <NavigationSection />
-  <h1>Layout: defaults</h1>
   <slot />
+  <FooterSection />
 </template>
 
 <style scoped></style>
