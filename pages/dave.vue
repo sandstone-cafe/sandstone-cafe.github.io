@@ -14,10 +14,13 @@
 // }
 </script>
 
-<!-- <HeroSVGSection /> -->
+<!-- 
+<HeroSVGSection /> 
+<HeroSection />  
+-->
 
 <template>
-  <HeroSection />  
+  <Hero />  
   <CTASection />
   <CategoriesSection />
   <GallerySection />
