@@ -21,6 +21,7 @@
 
 <template>
   <Hero />  
+  <!-- <AnimateText /> -->
   <CTASection />
   <CategoriesSection />
   <GallerySection />
