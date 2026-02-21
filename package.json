@@ -16,7 +16,7 @@
     "@tanstack/vue-query": "^5.92.9",
     "lucide-vue-next": "^0.564.0",
     "nuxt": "latest",
-    "tailwind": "latest",
+    "tailwindcss": "latest",
     "reka-ui": "^2.8.0",
     "vue": "^3.5.28",
     "vue-router": "^4.6.4",
