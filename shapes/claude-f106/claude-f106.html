@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 
+          https://claude.ai/chat/442a72c7-5b84-48dc-84dd-bc5a5f61f206
+    -->
+    <title>Platters & Buffets Shapes</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 40px;
+        background: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+        font-family: Arial, sans-serif;
+      }
+
+      .shape-container {
+        position: relative;
+      }
+
+      .shape {
+        position: relative;
+        width: 800px;
+        height: 300px;
+      }
+
+      /* Top shape (beige/tan) */
+      .shape-top {
+        clip-path: polygon(5% 15%, 95% 0%, 100% 85%, 10% 100%);
+        background: #c9b697;
+        border: 8px solid white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Bottom shape (purple) */
+      .shape-bottom {
+        clip-path: polygon(15% 30%, 100% 10%, 95% 90%, 0% 100%);
+        background: #5d5a78;
+        border: 8px solid white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 120px;
+        font-weight: bold;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shape-container">
+      <div class="shape shape-top">
+        <div class="text">PLATTERS</div>
+      </div>
+    </div>
+
+    <div class="shape-container">
+      <div class="shape shape-bottom">
+        <div class="text">BUFFETS</div>
+      </div>
+    </div>
+  </body>
+</html>

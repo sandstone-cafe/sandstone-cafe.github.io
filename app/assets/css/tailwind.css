@@ -1,0 +1,149 @@
+/* -------------------------------------------------------
+   Google Fonts
+------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap');
+
+/* -------------------------------------------------------
+   Tailwind Layers
+------------------------------------------------------- */
+/* 
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+*/
+
+@import "tailwindcss";
+
+/* -------------------------------------------------------
+   Design Tokens (Light Mode)
+------------------------------------------------------- */
+@layer base {
+  :root {
+    
+    --background: 36 33% 97%;
+    --foreground: 30 10% 15%;
+
+    --card: 36 30% 95%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 36 30% 95%;
+    --popover-foreground: 30 10% 15%;
+
+    --primary: 30 65% 22%;
+    --primary-foreground: 36 33% 97%;
+
+    --secondary: 38 85% 58%;
+    --secondary-foreground: 30 10% 15%;
+
+    --muted: 33 20% 88%;
+    --muted-foreground: 30 10% 40%;
+
+    --accent: 42 90% 62%;
+    --accent-foreground: 30 10% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 33 20% 85%;
+    --input: 33 20% 85%;
+    --ring: 30 65% 22%;
+
+    --radius: 0.625rem;
+
+    /* Café palette */
+    --espresso: 24 50% 12%;
+    --dark-roast: 22 45% 20%;
+    --coffee: 30 65% 22%;
+    --sausage: 18 40% 32%;
+    --toast: 30 35% 52%;
+    --latte: 33 40% 72%;
+    --butter: 42 70% 78%;
+    --egg-yolk: 42 90% 62%;
+    --golden: 38 85% 58%;
+    --cream: 36 40% 92%;
+    --eggshell: 36 33% 97%;
+
+    /* Sidebar */
+    --sidebar-background: 36 33% 97%;
+    --sidebar-foreground: 30 10% 15%;
+    --sidebar-primary: 30 65% 22%;
+    --sidebar-primary-foreground: 36 33% 97%;
+    --sidebar-accent: 33 20% 88%;
+    --sidebar-accent-foreground: 30 10% 15%;
+    --sidebar-border: 33 20% 85%;
+    --sidebar-ring: 30 65% 22%;
+
+    /* Gradients + Reka UI */
+    --tw-gradient-stops: hsl(36 33% 97% / 0.95), hsl(36 33% 97% / 0.7), transparent;
+    --reka-accordion-duration: 400ms;
+    --reka-accordion-easing: cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* -------------------------------------------------------
+     Dark Mode Tokens
+  ------------------------------------------------------- */
+  .dark {
+    --background: 24 50% 12%;
+    --foreground: 36 33% 97%;
+
+    --card: 22 45% 20%;
+    --card-foreground: 36 33% 97%;
+
+    --popover: 22 45% 20%;
+    --popover-foreground: 36 33% 97%;
+
+    --primary: 42 90% 62%;
+    --primary-foreground: 24 50% 12%;
+
+    --secondary: 30 65% 22%;
+    --secondary-foreground: 36 33% 97%;
+
+    --muted: 22 30% 25%;
+    --muted-foreground: 33 20% 65%;
+
+    --accent: 38 85% 58%;
+    --accent-foreground: 24 50% 12%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 22 30% 25%;
+    --input: 22 30% 25%;
+    --ring: 42 90% 62%;
+
+    --sidebar-background: 24 50% 12%;
+    --sidebar-foreground: 36 33% 97%;
+    --sidebar-primary: 42 90% 62%;
+    --sidebar-primary-foreground: 24 50% 12%;
+    --sidebar-accent: 22 30% 25%;
+    --sidebar-accent-foreground: 36 33% 97%;
+    --sidebar-border: 22 30% 25%;
+    --sidebar-ring: 42 90% 62%;
+  }
+}
+
+/* -------------------------------------------------------
+    Base Styles
+------------------------------------------------------- */
+
+/* 
+@layer base {
+  :root {
+    --tw-translate-x: calc(calc(1/2 * 100%) * -1);
+    --tw-translate-y: calc(calc(1/2 * 100%) * -1);
+  }
+} 
+  */
+
+/* * {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-family: 'DM Sans', sans-serif;
+} */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Serif Display', serif;
+}

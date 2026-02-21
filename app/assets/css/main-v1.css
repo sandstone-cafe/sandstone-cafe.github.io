@@ -1,0 +1,220 @@
+@import "./tailwind.css";
+@import "./utilities.css";
+
+
+/*
+:root {
+  background: hsl(var(--background));
+  foreground: hsl(var(--foreground));
+  accent: 'hsl(var(--accent))',
+  'accent-foreground': 'hsl(var(--accent-foreground))',
+  border: 'hsl(var(--border))',
+  muted: 'hsl(var(--muted))',
+  'muted-foreground': 'hsl(var(--muted-foreground))',
+}
+*/
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'DM Serif Display', serif;
+}
+
+:root {
+  --tw-gradient-stops: hsl(36 33% 97% / 0.95) , hsl(36 33% 97% / 0.7) , transparent;
+  --reka-accordion-duration: 400ms;
+  --reka-accordion-easing: cubic-bezier(0.25, 1, 0.5, 1);
+}
+.reka-accordion-content {
+  height: 220px !important;
+}
+.w-1\.5 {
+  width: 0.375rem;
+}
+.bg-accent {
+  background-color: hsl(var(--accent));
+}
+
+.bg-gradient-to-r {
+  --tw-gradient-position: to right in oklab;
+  background-image: linear-gradient(var(--tw-gradient-stops));
+}
+
+.from-background\/95 {
+  --tw-gradient-from: hsl(var(--background) / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: hsl(var(--background) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-transparent {
+  --tw-gradient-to: transparent;
+  --tw-gradient-stops: var(
+    --tw-gradient-via-stops, 
+    var(--tw-gradient-position), 
+    var(--tw-gradient-from) 
+    var(--tw-gradient-from-position), 
+    var(--tw-gradient-to) 
+    var(--tw-gradient-to-position)
+  );
+}
+.via-background\/70 {
+  --tw-gradient-to: hsl(var(--background) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), hsl(var(--background) / 0.7) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+
+.font-serif {
+  font-family: DM Serif Display, serif;
+}
+
+.font-sans {
+  font-family: DM Sans, sans-serif;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.hover\:bg-muted\/50:hover {
+  background-color: hsl(var(--muted) / 0.5);
+}
+.text-foreground {
+  color: hsl(var(--foreground));
+}
+
+.border-border {
+  border-color: hsl(var(--border));
+}
+.text-primary-foreground {
+  color: hsl(var(--primary-foreground));
+}
+.bg-primary {
+  background-color: hsl(var(--primary));
+}
+.text-accent {
+  color: hsl(var(--accent));
+}
+.reka-accordion-content {
+  height: 220px !important;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.bg-foreground\/40 {
+  background-color: hsl(var(--foreground) / 0.4);
+}
+
+
+.bg-gradient-to-r {
+  --tw-gradient-position: to right in oklab;
+  background-image: linear-gradient(var(--tw-gradient-stops));
+}
+
+.from-background\/95 {
+  --tw-gradient-from: hsl(var(--background) / 0.95) var(--tw-gradient-from-position);
+  --tw-gradient-to: hsl(var(--background) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-transparent {
+  --tw-gradient-to: transparent;
+  --tw-gradient-stops: var(
+    --tw-gradient-via-stops, 
+    var(--tw-gradient-position), 
+    var(--tw-gradient-from) 
+    var(--tw-gradient-from-position), 
+    var(--tw-gradient-to) 
+    var(--tw-gradient-to-position)
+  );
+}
+.to-transparent {
+  --tw-gradient-to: transparent;
+}
+
+.via-background\/70 {
+  --tw-gradient-to: hsl(var(--background) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), hsl(var(--background) / 0.7) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+
+.font-serif {
+  font-family: DM Serif Display, serif;
+}
+
+.font-sans {
+  font-family: DM Sans, sans-serif;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.hover\:bg-muted\/50:hover {
+  background-color: hsl(var(--muted) / 0.5);
+}
+.text-foreground {
+  color: hsl(var(--foreground));
+}
+
+.border-border {
+  border-color: hsl(var(--border));
+}
+.text-primary-foreground {
+  color: hsl(var(--primary-foreground));
+}
+.bg-primary {
+  background-color: hsl(var(--primary));
+}
+.text-accent {
+  color: hsl(var(--accent));
+}
+.reka-accordion-content {
+  height: 220px !important; /* or whatever fits your largest category */
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+/* Mouse */
+
+.bg-foreground\/40 {
+  background-color: hsl(var(--foreground) / 0.4);
+}
+
+/* .border-foreground\/30 {
+  border-color: hsl(var(--foreground) / 0.3);
+} */
+
+/* .bottom-8 {
+  bottom: 2rem;
+} */
+
+
+
+/* 
+w-1.5 h-3 rounded-full bg-foreground/40
+
+
+border border-border text-foreground font-sans text-sm font-semibold px-8 py-4 rounded-lg hover:bg-muted/50 transition-colors
+bg-primary 
+text-primary-foreground
+
+*/
+.reka-accordion-content {
+  height: 220px !important; /* or whatever fits your largest category */
+}

@@ -1,0 +1,18 @@
+<svg width="900" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- White border (outer polygon) -->
+  <polygon points="120,80 880,30 920,290 180,340" 
+           fill="white"/>
+  
+  <!-- Tan/beige fill (inner polygon, inset by border width) -->
+  <polygon points="132,88 868,38 908,282 192,332" 
+           fill="#c9b697"/>
+  
+  <!-- Text -->
+  <text x="500" y="200" 
+        font-family="Arial, sans-serif" 
+        font-size="140" 
+        font-weight="bold" 
+        fill="white" 
+        text-anchor="middle" 
+        letter-spacing="10">PLATTERS</text>
+</svg>

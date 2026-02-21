@@ -1,0 +1,107 @@
+/* ──────────────────────────────────────────────
+   Sandstone animated SVG logo
+   ────────────────────────────────────────────── */
+
+/* Shared path styles */
+.sandstone-svg path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Subtle glow/shadow for depth */
+.sandstone-svg {
+  filter: drop-shadow(0 2px 6px hsl(var(--coffee) / 0.25));
+}
+.dark .sandstone-svg {
+  filter: drop-shadow(0 2px 8px hsl(var(--egg-yolk) / 0.3));
+}
+
+.sandstone-letter {
+  stroke: hsl(var(--coffee));
+  stroke-width: 38;
+}
+
+.dark .sandstone-letter {
+  stroke: hsl(var(--egg-yolk));
+}
+
+.sandstone-underline {
+  stroke: hsl(var(--golden));
+  stroke-width: 6;
+}
+
+.dark .sandstone-underline {
+  stroke: hsl(var(--latte));
+}
+
+#t-cross-path {
+  stroke-width: 30;
+}
+
+/* ── Static (no animation) ── */
+.sandstone-static path {
+  stroke-dashoffset: 0 !important;
+}
+
+/* ── Animated variant ── */
+/* Smoother easing + pen-pressure (stroke-width ramps up during draw) */
+.sandstone-animate #s-path {
+  stroke-dasharray: 5838;
+  animation:
+    writeS 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penPressureLetter 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.sandstone-animate #andstone-path {
+  stroke-dasharray: 8577;
+  animation:
+    writeAndStone 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penPressureBody 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.sandstone-animate #t-cross-path {
+  stroke-dasharray: 868;
+  animation:
+    writeTCross 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penPressureCross 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.sandstone-animate #underline {
+  stroke-dasharray: 2212;
+  animation: writeUnderline 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Write-on keyframes */
+@keyframes writeS {
+  0%        { stroke-dashoffset: 5838; }
+  40%, 100% { stroke-dashoffset: 0; }
+}
+@keyframes writeAndStone {
+  0%, 20%   { stroke-dashoffset: 8577; }
+  90%, 100% { stroke-dashoffset: 0; }
+}
+@keyframes writeTCross {
+  0%, 91%   { stroke-dashoffset: 868; }
+  93%, 100% { stroke-dashoffset: 0; }
+}
+@keyframes writeUnderline {
+  0%, 94%   { stroke-dashoffset: 2212; }
+  100%      { stroke-dashoffset: 0; }
+}
+
+/* Pen-pressure: stroke starts thin and settles to final weight */
+@keyframes penPressureLetter {
+  0%   { stroke-width: 18; }
+  20%  { stroke-width: 42; }
+  50%  { stroke-width: 34; }
+  100% { stroke-width: 38; }
+}
+@keyframes penPressureBody {
+  0%, 20% { stroke-width: 16; }
+  40%     { stroke-width: 40; }
+  70%     { stroke-width: 34; }
+  100%    { stroke-width: 38; }
+}
+@keyframes penPressureCross {
+  0%, 91% { stroke-width: 14; }
+  93%     { stroke-width: 34; }
+  100%    { stroke-width: 30; }
+}

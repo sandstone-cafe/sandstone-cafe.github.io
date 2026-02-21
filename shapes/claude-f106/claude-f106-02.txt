@@ -1,0 +1,18 @@
+<svg width="900" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- White border (outer polygon) -->
+  <polygon points="80,120 880,50 850,310 40,330" 
+           fill="white"/>
+  
+  <!-- Purple fill (inner polygon, inset by border width) -->
+  <polygon points="92,128 868,58 838,302 52,322" 
+           fill="#5d5a78"/>
+  
+  <!-- Text -->
+  <text x="460" y="210" 
+        font-family="Arial, sans-serif" 
+        font-size="140" 
+        font-weight="bold" 
+        fill="white" 
+        text-anchor="middle" 
+        letter-spacing="10">BUFFETS</text>
+</svg>
