@@ -37,9 +37,9 @@
 
     <!-- Gallery -->
     <GallerySection />
-    <h6>Catering</h6>
+    <!-- <h6>Catering</h6> -->
     <!-- Catering -->
-    <CateringSection />
+    <!-- <CateringSection /> -->
     <!--    <h6>CAS</h6>-->
     <!--    <CorporateAsymmetricSection />-->
 

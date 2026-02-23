@@ -44,7 +44,8 @@
    * assignment for gradient stops.
    */
   .from-background\/95 {
-    --tw-gradient-from: hsl(var(--background) / 0.95);
+    /* --tw-gradient-from: hsl(var(--background) / 0.95); */
+    --tw-gradient-from: hsl(var(--foreground) / 0.95);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
   }
 

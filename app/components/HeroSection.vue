@@ -7,7 +7,10 @@
  */
 
 import SandstoneLogo from '~/components/SandstoneLogo.vue'
-import heroImg from '~/assets/images/demo/hero-breakfast.jpg'
+// import heroImg from '~/assets/images/demo/hero-breakfast.jpg'
+// interior-front-facing-v3-153kb_Lnn.webp
+// interior-front-facing-v5-153kb_Lnn.webp
+import heroImg from '~/assets/images/hero-section/interior-front-facing-v3-153kb_Lnn.webp'
 // import heroImg from '@store/03-upscale/interior-front-facing-v3-153kb_Lnn.jpeg';
 
 /**
@@ -21,7 +24,10 @@ function scrollToId(id: string) {
 </script>
 
 <template>
-  <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
+  <!-- <section id="home" class="relative min-h-screen flex items-center overflow-hidden"> -->
+  <section id="home" class="dark force-light-content relative min-h-screen flex items-center overflow-hidden">
+
+
 
     <!-- Background image -->
     <div class="absolute inset-0">
@@ -30,6 +36,7 @@ function scrollToId(id: string) {
 
       <!-- Gradient overlay -->
       <div class="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+      <!-- <div class="absolute inset-0 bg-gradient-to-r from-background/95  to-transparent" /> -->
     </div>
 
     <!-- Content -->

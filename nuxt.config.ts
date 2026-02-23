@@ -36,21 +36,21 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
     optimizeDeps: { include: ["lucide-vue-next"] },
     resolve: { dedupe: ["vue", "lucide-vue-next"] },
-    server: {
-      fs: {
-        // Allow serving files from one level up to the project root
-        allow: [".."],
-      },
-    },
+    // server: {
+    //   fs: {
+    //     // Allow serving files from one level up to the project root
+    //     allow: [".."],
+    //   },
+    // },
   },
 
-  ssr: true, // keep SSR enabled — static generation still works
+  // ssr: true, // keep SSR enabled — static generation still works
 
-  nitro: {
-    preset: "github_pages", // IMPORTANT
-  },
+  // nitro: {
+  //   preset: "github_pages", // IMPORTANT
+  // },
 
-  app: {
-    baseURL: "/sandstone-cafe.github.io/", // REQUIRED for GitHub Pages
-  },
+  // app: {
+  //   baseURL: "/sandstone-cafe.github.io/", // REQUIRED for GitHub Pages
+  // },
 });
