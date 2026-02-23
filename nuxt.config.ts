@@ -43,4 +43,14 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  ssr: true, // keep SSR enabled — static generation still works
+
+  nitro: {
+    preset: "github_pages", // IMPORTANT
+  },
+
+  app: {
+    baseURL: "/sandstone-cafe.github.io/", // REQUIRED for GitHub Pages
+  },
 });
