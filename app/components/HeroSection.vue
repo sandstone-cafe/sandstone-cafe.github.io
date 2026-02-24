@@ -25,7 +25,7 @@ function scrollToId(id: string) {
 
 <template>
   <!-- <section id="home" class="relative min-h-screen flex items-center overflow-hidden"> -->
-  <section id="home" class="dark force-light-content relative min-h-screen flex items-center overflow-hidden">
+  <section id="home" class="force-light-content relative min-h-screen flex items-center overflow-hidden">
 
 
 
@@ -35,8 +35,10 @@ function scrollToId(id: string) {
         class="w-full h-full object-cover" loading="eager" />
 
       <!-- Gradient overlay -->
-      <div class="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+      <!-- <div class="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent " /> -->
       <!-- <div class="absolute inset-0 bg-gradient-to-r from-background/95  to-transparent" /> -->
+      <!-- <div class="absolute inset-0 bg-gradient-to-r from-background via-background to-transparent opacity-90" /> -->
+      <div class="absolute inset-0 bg-gradient-to-r from-background/95 via-background to-transparent opacity-90"></div>
     </div>
 
     <!-- Content -->
@@ -50,7 +52,7 @@ function scrollToId(id: string) {
 
         <!-- Subtitle -->
         <p class="mt-6 text-lg text-muted-foreground font-sans max-w-md leading-relaxed animate-fade-up delay-200">
-          Fresh breakfasts, artisan sandwiches, and the perfect latte — crafted daily with love.
+          Eat In / Take Out
         </p>
 
         <!-- CTA buttons -->
@@ -61,7 +63,7 @@ function scrollToId(id: string) {
           </button>
 
           <button type="button" @click="scrollToId('#contact')"
-            class="border border-border text-foreground font-sans text-sm font-semibold px-8 py-4 rounded-lg hover:bg-muted/50 transition-colors">
+            class="border border-border text-foreground font-sans text-sm font-semibold px-8 py-4 rounded-lg hover:bg-muted/50 transition-colors white">
             Book a Table
           </button>
         </div>

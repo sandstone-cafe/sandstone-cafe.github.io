@@ -1,0 +1,72 @@
+/* ──────────────────────────────────────────────
+   Base Palette — Raw OKLCH Café Colors
+   These never change; light/dark modes derive from them.
+   ────────────────────────────────────────────── */
+
+:root {
+  --warm-sand: oklch(73% 0.18 70);
+  --golden-apricot: oklch(67% 0.22 55);
+  --deep-terracotta: oklch(52% 0.20 35);
+  --rich-walnut: oklch(35% 0.15 35);
+  --charcoal-slate: oklch(28% 0.08 250);
+  --deep-ebony: oklch(18% 0.05 250);
+  --honey-gold: oklch(62% 0.20 65);
+  --soft-cream: oklch(89% 0.12 80);
+  --bronze-accent: oklch(45% 0.18 50);
+  --sky-blue: oklch(68% 0.15 240);
+  --copper-rust: oklch(48% 0.22 30);
+}
+
+/* ──────────────────────────────────────────────
+   Light Mode — Semantic Tokens
+   These are what your UI actually uses.
+   ────────────────────────────────────────────── */
+
+:root {
+  --background: var(--soft-cream);
+  --foreground: var(--deep-ebony);
+
+  --muted: var(--warm-sand);
+  --muted-foreground: var(--rich-walnut);
+
+  --accent: var(--golden-apricot);
+  --accent-foreground: var(--deep-ebony);
+
+  --primary: var(--deep-terracotta);
+  --primary-foreground: var(--soft-cream);
+
+  --secondary: var(--bronze-accent);
+  --secondary-foreground: var(--soft-cream);
+
+  --border: var(--warm-sand);
+  --input: var(--warm-sand);
+  --ring: var(--golden-apricot);
+
+  --radius: 0.5rem;
+}
+
+/* ──────────────────────────────────────────────
+   Dark Mode — Semantic Tokens
+   Activated via <html class="dark">
+   ────────────────────────────────────────────── */
+
+.dark {
+  --background: var(--deep-ebony);
+  --foreground: var(--soft-cream);
+
+  --muted: var(--charcoal-slate);
+  --muted-foreground: var(--warm-sand);
+
+  --accent: var(--honey-gold);
+  --accent-foreground: var(--deep-ebony);
+
+  --primary: var(--copper-rust);
+  --primary-foreground: var(--soft-cream);
+
+  --secondary: var(--bronze-accent);
+  --secondary-foreground: var(--soft-cream);
+
+  --border: var(--charcoal-slate);
+  --input: var(--charcoal-slate);
+  --ring: var(--honey-gold);
+}

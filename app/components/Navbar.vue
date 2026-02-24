@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
           <span
             class="font-serif text-2xl md:text-3xl text-foreground tracking-tight transition-all duration-500 absolute"
             :class="showLogo ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'">
-            The Morning<span class="text-accent">.</span>
+            <!-- The Morning<span class="text-accent">.</span> -->
           </span>
 
           <!-- Compact SVG logo -->

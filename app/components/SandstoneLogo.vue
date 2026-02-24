@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="MidYMid" viewBox="0 0 3040 825" aria-label="Sandstone"
+  <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 3040 825" aria-label="Sandstone"
     :class="[
       'sandstone-svg',
       props.animate ? 'sandstone-animate' : 'sandstone-static',

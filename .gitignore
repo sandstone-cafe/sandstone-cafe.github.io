@@ -31,3 +31,11 @@ Archives/
 Xplugins
 XXXplugins
 shapes/
+
+Chat-SVG/
+
+app/components/SandstoneLogo-Bolt.vue
+app/components/SandstoneLogo-Replit.vue
+app/components/SandstoneLogo-V0.vue
+app/components/SandstoneLogo-sMWA.vue
+app/components/SandstoneLogo-v3.vue

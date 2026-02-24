@@ -16,11 +16,22 @@ import { ref, onMounted } from 'vue'
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 
 /* Nuxt/Vite asset imports */
-import foodLatte from '~/assets/images/demo/food-latte.jpg'
-import foodSandwiches from '~/assets/images/demo/food-sandwiches.jpg'
-import foodPastries from '~/assets/images/demo/food-pastries.jpg'
-import foodBrunch from '~/assets/images/demo/food-brunch.jpg'
-import cafeInterior from '~/assets/images/demo/cafe-interior.jpg'
+// import foodLatte from '~/assets/images/demo/food-latte.jpg'
+// fb-202-smoothies-double-v3-1920x1440.webp
+import foodLatte from '~/assets/images/gallery-section/fb-202-smoothies-double-v3-1920x1440.webp'
+
+// import foodSandwiches from '~/assets/images/demo/food-sandwiches.jpg'
+// fb-105-chicken-wrap-v4-240x320.webp
+import foodSandwiches from '~/assets/images/gallery-section/fb-105-chicken-wrap-v4-240x320.webp'
+// import foodPastries from '~/assets/images/demo/food-pastries.jpg'
+// fb-132-scones-cream-jam-v5-4000x3144.webp
+import foodPastries from '~/assets/images/gallery-section/fb-132-scones-cream-jam-v5-4000x3144.webp'
+// import foodBrunch from '~/assets/images/demo/food-brunch.jpg'
+// fb-130-full-breakfast-avacado-v5-1920x1482.webp
+import foodBrunch from '~/assets/images/gallery-section/fb-130-full-breakfast-avacado-v5-1920x1482.webp'
+// import cafeInterior from '~/assets/images/demo/cafe-interior.jpg'
+// salmon-avacado-toasts-v5-320x240.webp
+import cafeInterior from '~/assets/images/gallery-section/salmon-avacado-toasts-v5-320x240.webp'
 
 // import foodLatte from '@drinks/fb-202-smoothies-double-v3-1920x1440.webp';
 

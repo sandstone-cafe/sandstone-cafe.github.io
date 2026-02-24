@@ -1,0 +1,61 @@
+/* Pen Action */
+/* @keyframes penLift {
+  0%   { stroke-width: inherit; opacity: 1; }
+  100% { stroke-width: 6; opacity: 0.4; }
+} */
+.sandstone-animate #s-path {
+  animation:
+    writeS 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penPressureLetter 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penLift 0.4s ease-out 3s forwards;
+}
+.sandstone-animate #andstone-path {
+  stroke-dasharray: 8577;
+  stroke-dashoffset: 0;
+  animation:
+    writeAndStone 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penPressureBody 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penLift 0.4s ease-out 3s forwards;
+}
+/* Shorten the final upstroke of the 'e' */
+#andstone-path {
+  stroke-dasharray: 8400 200; /* hides the last 200 units */
+}
+@keyframes penFlick {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+.sandstone-animate #s-path {
+  animation:
+    writeS 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penPressureLetter 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penLift 0.4s ease-out 3s forwards,
+    penFlick 0.2s ease-out 3.2s forwards;
+}
+
+.sandstone-animate #s-path {
+  stroke-dasharray: 5838;
+  animation:
+    writeS 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penPressureLetter 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penLift 0.4s ease-out 3s forwards,
+    penFlick 0.2s ease-out 3.2s forwards;
+}
+
+.sandstone-animate #andstone-path {
+  stroke-dasharray: 8400 200; /* trims the 'e' upstroke */
+  animation:
+    writeAndStone 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penPressureBody 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    penLift 0.4s ease-out 3s forwards;
+}
+
+@keyframes penLift {
+  0%   { stroke-width: inherit; opacity: 1; }
+  100% { stroke-width: 38; opacity: 0.4; }
+}
+
+@keyframes penFlick {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
