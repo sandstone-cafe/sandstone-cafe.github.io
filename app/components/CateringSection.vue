@@ -16,7 +16,9 @@
 import { Building2, Users, PartyPopper } from 'lucide-vue-next'
 
 /* Nuxt/Vite asset import */
-import cateringImg from '~/assets/images/demo/catering-corporate.jpg'
+// import cateringImg from '~/assets/images/demo/catering-corporate.jpg'
+// Food-Catering-Quiche-Salad-Cakes.webp
+import cateringImg from '~/assets/images/catering-section/Food-Catering-Quiche-Salad-Cakes.webp'
 
 /** Catering package definitions */
 const packages = [

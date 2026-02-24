@@ -39,12 +39,12 @@
     <GallerySection />
     <!-- <h6>Catering</h6> -->
     <!-- Catering -->
-    <!-- <CateringSection /> -->
+    <CateringSection />
     <!--    <h6>CAS</h6>-->
-    <!--    <CorporateAsymmetricSection />-->
+    <CorporateAsymmetricSection />
 
     <!--    <h6>CCS</h6>-->
-    <!--    <CorporateCardsSection />-->
+    <CorporateCardsSection />
 
     <!--    <h6>CSS</h6>-->
     <CorporateShowcaseSection />

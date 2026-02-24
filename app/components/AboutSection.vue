@@ -11,7 +11,9 @@
  * - Uses Nuxt/Vite asset import for images.
  */
 
-import cafeInterior from '~/assets/images/demo/cafe-interior.jpg'
+// import cafeInterior from '~/assets/images/demo/cafe-interior.jpg'
+// interior-otherside-v5.webp
+import cafeInterior from '~/assets/images/about-section/interior-otherside-v5.webp'
 </script>
 
 <template>
