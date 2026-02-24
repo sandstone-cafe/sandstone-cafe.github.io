@@ -27,12 +27,12 @@
 }
 
 .sandstone-underline {
-  stroke: hsl(var(--golden));
-  stroke-width: 6;
+  stroke: hsl(var(--coffee));
+  stroke-width: 38;
 }
 
 .dark .sandstone-underline {
-  stroke: hsl(var(--latte));
+  stroke: hsl(var(--egg-yolk));
 }
 
 #t-cross-path {

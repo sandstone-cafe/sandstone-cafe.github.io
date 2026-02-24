@@ -32,6 +32,10 @@ export default defineNuxtConfig({
     // '~/assets/css/main-vanilla.css'
     // "~/assets/css/main.css",
   ],
+  // Disable the manifest to stop the 404s in dev
+  experimental: {
+    appManifest: false,
+  },
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: { include: ["lucide-vue-next"] },
